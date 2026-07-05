@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Tessera is a "Bloomberg terminal lite" for real-world collectibles in the Renaiss ecosystem. It presents floors, volume, and per-category price indices in one readable dashboard, each metric paired with a transparent, clearly-sourced risk score. It serves collectors (checking fair value before buying/selling), traders (spotting momentum and risk shifts), and community operators (monitoring market health).
+Tessera is a "Bloomberg terminal lite" for real-world collectibles in the Renaiss ecosystem — specifically graded trading cards (Pokémon, One Piece, Sports) surfaced by the Renaiss Index. It presents per-category price indices, volume/movers, and recent sales in one readable dashboard, and pairs each with a transparent, clearly-sourced **risk score that Renaiss itself does not provide**. Positioning: *Renaiss gives you the price; Tessera adds the risk lens.* It serves collectors (fair value before buying/selling), traders (momentum and risk shifts), and community operators (market health).
 
 ## Core Value
 
@@ -46,7 +46,7 @@ A judge or collector can open Tessera, understand the collectible market at a gl
 
 - **Event:** Renaiss Tech Hackathon S1, Tool track. Build window Jul 4–11, 2026 (currently ~day 2).
 - **Mission fit:** Collectible markets are opaque and fragmented; unquantified risk throttles the liquidity that is Renaiss's core mission. Tessera gives collectors/traders/operators a single trusted dashboard to price, compare, and gauge risk.
-- **Data access is an open CTO question.** Whether an approved Renaiss API/SDK/indexer exists for floors, volume, listings, and historical sales is unresolved (spec §8). v1 therefore runs on **clearly-labeled mock/seed data** behind a normalized data layer, so the demo is never blocked and real Renaiss sources can be swapped in later without reworking the UI or risk engine.
+- **Data access is resolved: the Renaiss Index API is real and rich.** `https://api.renaissos.com/v1/*` provides game-level index tiles (value, base, deltas, sparkline, top movers, ranked constituents), per-card price series / FMV (median/mean/VWAP, versioned) / trade history, plus native `confidence` and freshness (`updatedAt`/`lastSaleAt`) fields — see `.planning/research/RENAISS-API.md`. It exposes **no risk score**, which is exactly Tessera's contribution. Public tier is rate-limited to **10 req/day per IP** (partner tier 10k/day via `X-Api-Key`/`X-Api-Secret`), so the backend fetches server-side and **caches a snapshot**, with **clearly-labeled mock/seed data** as the default behind the same `DataSource` seam — for demo reliability, unit tests, and the deliberately-thin "insufficient data" category. Real vs mock is one wiring point; both carry provenance.
 - **Judging criteria to optimize:** Usability (one readable dashboard), Innovation (a risk-scored *index*, not just a price list), Ecosystem relevance (authenticity/liquidity/culture), Clarity (labeled sources, timestamps, explainable scores), Safety (no private data; caveated, confidence-banded derived outputs).
 - **Demo:** 60–90s walkthrough — open dashboard → read overview → drill into one category index → expand the risk score to show factors + source → highlight an "insufficient data" state to prove the safety design. Recorded clip + live link.
 
@@ -64,11 +64,14 @@ A judge or collector can open Tessera, understand the collectible market at a gl
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Mock/seed data first, behind a normalized data layer | Real Renaiss data access is an unresolved CTO question; the demo must never be blocked, and a clean seam lets real sources swap in later | — Pending |
+| Consume the real Renaiss Index API as the data substrate | Real indices/series/trades with native confidence + freshness maximize Ecosystem relevance and honesty; attributed as the source | — Pending |
+| Tessera's compute = the transparent RISK score Renaiss doesn't provide | This is the Innovation delta; Renaiss ships the price index but no risk lens | — Pending |
+| Keep mock/seed fallback behind the same `DataSource` seam | Demo reliability under a 10 req/day public limit, unit tests, and the deliberately-thin insufficient-data safety demo | — Pending |
 | Deterministic, versioned, explainable risk engine (not ML/black box) | Judging rewards Clarity + Safety; the score must show its factors and a confidence band | — Pending |
-| Volume-weighted category index normalized to 100 at a base period | Standard, defensible index construction that reads clearly on a chart | — Pending |
+| Display Renaiss's index (attributed) + optionally a reproducible VWAP→100 index from trades | Don't reinvent a worse index; the reproducible one backs the "verify by hand" methodology + safety story | — Pending |
 | Every metric carries a source label + freshness timestamp | Core to the "trust the numbers" value and the Clarity/Safety criteria | — Pending |
-| Provide a clean public JSON API | Potential bonus ecosystem points; makes Tessera reusable by other builders | — Pending |
+| Provide a clean public JSON API | Bonus ecosystem points; reusable by other builders (nearly free once the backend exists) | — Pending |
+| Frontend built externally in Claude Design, exported as a handoff, wired to this backend here | User owns UI craft in Claude Design; Claude Code owns the backend + integration | — Pending |
 
 ## Evolution
 
