@@ -86,13 +86,37 @@ Which phases cover which requirements. Populated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| _(populated by roadmapper)_ | — | Pending |
+| DATA-01 | Phase 1 — Data Layer & Metric Contract | Pending |
+| DATA-02 | Phase 1 — Data Layer & Metric Contract | Pending |
+| DATA-03 | Phase 1 — Data Layer & Metric Contract | Pending |
+| PROV-02 | Phase 1 — Data Layer & Metric Contract | Pending |
+| IDX-02 | Phase 2 — Analytics Engines (Risk + Index) | Pending |
+| IDX-03 | Phase 2 — Analytics Engines (Risk + Index) | Pending |
+| RISK-03 | Phase 2 — Analytics Engines (Risk + Index) | Pending |
+| RISK-05 | Phase 2 — Analytics Engines (Risk + Index) | Pending |
+| API-01 | Phase 3 — API & Cache | Pending |
+| SHIP-01 | Phase 3 — API & Cache | Pending |
+| OVW-01 | Phase 4 — Frontend Views & Charts | Pending |
+| OVW-02 | Phase 4 — Frontend Views & Charts | Pending |
+| OVW-03 | Phase 4 — Frontend Views & Charts | Pending |
+| IDX-01 | Phase 4 — Frontend Views & Charts | Pending |
+| RISK-01 | Phase 4 — Frontend Views & Charts | Pending |
+| RISK-02 | Phase 4 — Frontend Views & Charts | Pending |
+| DET-01 | Phase 4 — Frontend Views & Charts | Pending |
+| DET-02 | Phase 4 — Frontend Views & Charts | Pending |
+| DET-03 | Phase 4 — Frontend Views & Charts | Pending |
+| RISK-04 | Phase 5 — Trust & Safety UI + Polish | Pending |
+| PROV-01 | Phase 5 — Trust & Safety UI + Polish | Pending |
+| PROV-03 | Phase 5 — Trust & Safety UI + Polish | Pending |
+| SHIP-02 | Phase 6 — Deploy, Demo & Submission | Pending |
 
 **Coverage:**
-- v1 requirements: 21 total
-- Mapped to phases: _(pending roadmap)_
-- Unmapped: _(pending roadmap)_
+- v1 requirements: 23 total (enumerated REQ-IDs across 8 categories; the earlier "21" summary undercounted — DATA×3, API×1, OVW×3, IDX×3, RISK×5, DET×3, PROV×3, SHIP×2 = 23)
+- Mapped to phases: 23
+- Unmapped: 0
+
+Every v1 requirement maps to exactly one phase; no orphans, no duplicates.
 
 ---
 *Requirements defined: 2026-07-05*
-*Last updated: 2026-07-05 after initial definition*
+*Last updated: 2026-07-05 after roadmap creation (traceability populated, 23/23 mapped)*
