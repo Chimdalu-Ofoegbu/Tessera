@@ -55,9 +55,10 @@ Series `usdCents = [200000, 210000, 240000]`, all `n = 4`, `confidence = high`, 
 - Index: base = 200000 → values `[100.00, 105.00, 120.00]`, current = 120.00. (No gaps; `n=4 ≥ 2`.)
 - Liquidity: totalObs = 12 → `L = 100·(1 − 12/40) = 70`.
 - Volatility: mean ≈ 216667, stdev ≈ 16997, CoV ≈ 0.0784 → `V = 100·0.0784/0.40 ≈ 19.6`.
-- With constituents `[900000, 60000, 45000, 30000]` (concentrated): shares → HHI ≈ 0.806, N=4 → `C = 100·(0.806 − 0.25)/0.75 ≈ 74.1`.
+- With constituents `[900000, 60000, 45000, 30000]` (concentrated): total 1,035,000, shares² sum → HHI ≈ 0.7623, N=4 → `C = 100·(0.7623 − 0.25)/0.75 ≈ 68.30`.
 - Data: high(10) + sparse(0, sampleSize 40) + stale(0) → `D = 10`.
-- Score = round(0.30·70 + 0.30·19.6 + 0.25·74.1 + 0.15·10) = round(21 + 5.88 + 18.5 + 1.5) = **47**. Band: high, deep, fresh → ±6.
+- Score = round(0.30·70 + 0.30·19.61 + 0.25·68.30 + 0.15·10) = round(21 + 5.88 + 17.08 + 1.5) = round(45.46) = **45**. Band: high, deep, fresh → ±6.
+  *(Verified against the actual `computeRisk`/`buildIndex` code — the engine tests are the source of truth.)*
 
 *(Exact test fixtures live in the engine test files; this example is illustrative of the mechanics.)*
 

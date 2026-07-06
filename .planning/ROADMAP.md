@@ -13,7 +13,7 @@ Tessera is built bottom-up along its dependency graph so that every stage is ind
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Data Layer & Metric Contract** - Normalized `DataSource` seam, provenance-wrapped metric envelope, and mock fixtures (including a deliberately-thin category) ✓ verified 2026-07-06
-- [ ] **Phase 2: Analytics Engines (Risk + Index)** - Pure, versioned risk and index engines with reconciling factors, base=100 rebasing, and a first-class `INSUFFICIENT_DATA` outcome
+- [x] **Phase 2: Analytics Engines (Risk + Index)** - Pure, versioned risk and index engines with reconciling factors, base=100 rebasing, and a first-class `INSUFFICIENT_DATA` outcome ✓ verified 2026-07-06
 - [ ] **Phase 3: API & Cache** - Cached JSON API that wires source to engines and serves provenance on every metric with an SPA-safe deploy config
 - [ ] **Phase 4: Frontend Views & Charts** - Overview and category-detail views with the index chart and risk breakdown — the end-to-end walkthrough
 - [ ] **Phase 5: Trust & Safety UI + Polish** - Shared provenance/confidence/insufficient-data affordances, honest copy, and accessibility applied everywhere
@@ -98,7 +98,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Layer & Metric Contract | 4/4 | ✓ Verified | 2026-07-06 |
-| 2. Analytics Engines (Risk + Index) | 0/TBD | Not started | - |
+| 2. Analytics Engines (Risk + Index) | 2/2 | ✓ Verified | 2026-07-06 |
 | 3. API & Cache | 0/TBD | Not started | - |
 | 4. Frontend Views & Charts | 0/TBD | Not started | - |
 | 5. Trust & Safety UI + Polish | 0/TBD | Not started | - |

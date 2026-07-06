@@ -5,28 +5,29 @@
 See: .planning/PROJECT.md (updated 2026-07-05)
 
 **Core value:** A judge or collector can open Tessera, understand the collectible market at a glance, and trust the numbers because every source, timestamp, and confidence band is visible — then drill into one category — all without explanation.
-**Current focus:** Phase 2 — Analytics Engines (Risk + Index)
+**Current focus:** Phase 3 — API & Cache
 
 ## Current Position
 
-Phase: 2 of 6 (Analytics Engines — Risk + Index)
+Phase: 3 of 6 (API & Cache)
 Plan: 0 of TBD in current phase
-Status: Phase 1 complete + verified; ready to plan Phase 2
-Last activity: 2026-07-06 — Phase 1 shipped & verified (data layer, 4 plans, 25 tests, all gates green)
+Status: Phases 1–2 complete + verified; ready to plan Phase 3
+Last activity: 2026-07-06 — Phase 2 shipped & verified (risk + index engines, 2 plans, 38 tests, methodology conformance confirmed)
 
-Progress: [██░░░░░░░░] 17% (1 of 6 phases)
+Progress: [███░░░░░░░] 33% (2 of 6 phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4 (Phase 1)
-- Execution model: orchestrator executes plans inline (write-heavy GSD executor subagents stall on this Windows env — see memory `tessera-execute-directly`)
+- Total plans completed: 6 (Phases 1–2)
+- Execution model: orchestrator executes plans inline (write-heavy GSD executor subagents stall on this Windows env — see memory `tessera-execute-directly`); read-heavy subagents (research/plan-check/verify) run fine
 
 **By Phase:**
 
 | Phase | Plans | Status | Notes |
 |-------|-------|--------|-------|
 | 1 — Data Layer & Metric Contract | 4/4 | ✓ verified | 25 tests, DATA-01/02/03 + PROV-02 |
+| 2 — Analytics Engines (Risk + Index) | 2/2 | ✓ verified | 13 core tests, IDX-02/03 + RISK-03/05 |
 
 **Recent Trend:**
 - Last plans: 01-01 scaffold, 01-02 metric envelope, 01-03 MockSource, 01-04 Renaiss adapter
@@ -51,7 +52,7 @@ None.
 
 ### Blockers/Concerns
 
-- [Phase 2]: Three open methodology decisions must be resolved and recorded in `METHODOLOGY.md` before scores are defensible live — risk factor weights, thin-data/min-sample thresholds (`src/core/thresholds.ts` placeholders MIN_SAMPLE=5, MAX_STALE_DAYS=30), and the index base-period definition.
+- None. Phase 2 methodology resolved + verified (see `02-METHODOLOGY.md`; engines `risk@1.0.0` / `index@1.0.0`). Phase 4/5 frontend is gated on the user's Claude Design handoff.
 
 ## Deferred Items
 
@@ -63,5 +64,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-07-06
-Stopped at: Phase 1 (data layer) complete & verified — 9/9 must-haves, tsc/vitest/build all exit 0. Next: plan & build Phase 2 (risk + index engines; research-flagged for methodology numbers).
+Stopped at: Phases 1–2 complete & verified (data layer + analytics engines; 38 tests; all gates green). Next: Phase 3 (API & cache — wire source→engines→cached JSON API in `/api`, serving the shapes the Claude Design UI expects).
 Resume file: None

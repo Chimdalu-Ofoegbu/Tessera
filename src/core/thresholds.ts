@@ -2,8 +2,8 @@
  * Shared "is there enough data?" thresholds. Pure, no I/O (this file lives in
  * `src/core`, which never imports anything with side effects).
  *
- * These placeholders are finalized in Phase 2 against the seed fixtures so the
- * deliberately-thin category trips INSUFFICIENT_DATA live during the demo.
+ * v1 values (finalized in Phase 2, `risk@1.0.0` / `index@1.0.0`), tuned against the
+ * seed fixtures so the deliberately-thin category trips INSUFFICIENT_DATA live in the demo.
  */
 
 /** Minimum observations for a metric to be considered sufficient. */
