@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+
+# build output
+dist
+dist-ssr
+*.tsbuildinfo
+
+# test / coverage
+coverage
+
+# vercel
+.vercel
+
+# local env — keep .env.example tracked
+.env
+.env.*
+!.env.example
+
+# editor / os
+*.local
+.DS_Store
+
+# local Claude Code settings (personal permission overrides)
+.claude/settings.local.json
+
+# stray scaffold temp dir (create-vite leftover; safe to delete)
+_scaffold
+_scaffold_*
