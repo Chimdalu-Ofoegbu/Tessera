@@ -1,0 +1,60 @@
+{
+  "_note": "Hand-authored sample matching the documented Renaiss Index API schema (RENAISS-API.md). Used only to unit-test the pure mappers — never a live call.",
+  "indices": [
+    {
+      "game": "pokemon",
+      "label": "Pokémon",
+      "value": 122.4,
+      "base": 100,
+      "deltas": { "d7": 1.8, "d30": 5.2, "d365": 22.4 },
+      "constituentCount": 40,
+      "updatedAt": "2026-07-01T00:00:00.000Z",
+      "sparkline": [
+        { "t": "2026-05-04T00:00:00.000Z", "usdCents": 200000, "n": 4, "kind": "transaction", "source": "ebay", "bucket": "public" },
+        { "t": "2026-05-18T00:00:00.000Z", "usdCents": 206000, "n": 3, "kind": "transaction", "source": "ebay", "bucket": "public" },
+        { "t": "2026-06-01T00:00:00.000Z", "usdCents": 213000, "n": 5, "kind": "transaction", "source": "goldin", "bucket": "public" },
+        { "t": "2026-06-15T00:00:00.000Z", "usdCents": 221000, "n": 4, "kind": "transaction", "source": "ebay", "bucket": "public" },
+        { "t": "2026-06-29T00:00:00.000Z", "usdCents": 244000, "n": 6, "kind": "transaction", "source": "pwcc", "bucket": "public" },
+        { "t": "2026-07-01T00:00:00.000Z", "usdCents": 245000, "n": 3, "kind": "listing", "source": "ebay", "bucket": "public" }
+      ]
+    },
+    {
+      "game": "sparse-set",
+      "label": "Sparse Set (thin)",
+      "value": 101.0,
+      "base": 100,
+      "deltas": { "d7": null, "d30": null, "d365": null },
+      "constituentCount": 1,
+      "updatedAt": "2026-07-01T00:00:00.000Z",
+      "sparkline": [
+        { "t": "2026-06-28T00:00:00.000Z", "usdCents": 30000, "n": 1, "kind": "listing", "source": "ebay", "bucket": "public" }
+      ]
+    }
+  ],
+  "detail": {
+    "game": "pokemon",
+    "label": "Pokémon",
+    "value": 122.4,
+    "base": 100,
+    "deltas": { "d7": 1.8, "d30": 5.2, "d365": 22.4 },
+    "constituentCount": 40,
+    "updatedAt": "2026-07-01T00:00:00.000Z",
+    "sparkline": [
+      { "t": "2026-06-01T00:00:00.000Z", "usdCents": 213000, "n": 5, "kind": "transaction", "source": "goldin", "bucket": "public" },
+      { "t": "2026-06-15T00:00:00.000Z", "usdCents": 221000, "n": 4, "kind": "transaction", "source": "ebay", "bucket": "public" },
+      { "t": "2026-06-29T00:00:00.000Z", "usdCents": 244000, "n": 6, "kind": "transaction", "source": "pwcc", "bucket": "public" }
+    ],
+    "constituents": [
+      { "rank": 1, "name": "Charizard", "setName": "Base Set", "cardNumber": "4", "grade": "10", "priceUsdCents": 250000, "deltaPct": 2.1, "lastSaleAt": "2026-06-30T00:00:00.000Z" },
+      { "rank": 2, "name": "Blastoise", "setName": "Base Set", "cardNumber": "2", "grade": "10", "priceUsdCents": 180000, "deltaPct": 1.4, "lastSaleAt": "2026-06-28T00:00:00.000Z" },
+      { "rank": 3, "name": "Venusaur", "setName": "Base Set", "cardNumber": "15", "grade": "10", "priceUsdCents": null, "deltaPct": null, "lastSaleAt": null }
+    ],
+    "recentTrades": [
+      { "source": "ebay", "observedAt": "2026-06-30T00:00:00.000Z", "kind": "transaction", "priceUsdCents": 251000, "currency": "USD", "company": "PSA", "grade": "10", "gradeLabel": "PSA 10" }
+    ]
+  },
+  "recentTrades": [
+    { "source": "ebay", "observedAt": "2026-06-30T00:00:00.000Z", "kind": "transaction", "priceUsdCents": 251000, "currency": "USD", "company": "PSA", "grade": "10", "gradeLabel": "PSA 10" },
+    { "source": "goldin", "observedAt": "2026-06-29T00:00:00.000Z", "kind": "listing", "priceUsdCents": 69000, "currency": "USD", "company": "PSA", "grade": "10", "gradeLabel": "PSA 10" }
+  ]
+}
