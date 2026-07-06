@@ -94,8 +94,8 @@ Which phases cover which requirements. Populated during roadmap creation.
 | IDX-03 | Phase 2 — Analytics Engines (Risk + Index) | Complete |
 | RISK-03 | Phase 2 — Analytics Engines (Risk + Index) | Complete |
 | RISK-05 | Phase 2 — Analytics Engines (Risk + Index) | Complete |
-| API-01 | Phase 3 — API & Cache | Pending |
-| SHIP-01 | Phase 3 — API & Cache | Pending |
+| API-01 | Phase 3 — API & Cache | Complete |
+| SHIP-01 | Phase 3 — API & Cache | In Progress |
 | OVW-01 | Phase 4 — Frontend Views & Charts | Pending |
 | OVW-02 | Phase 4 — Frontend Views & Charts | Pending |
 | OVW-03 | Phase 4 — Frontend Views & Charts | Pending |

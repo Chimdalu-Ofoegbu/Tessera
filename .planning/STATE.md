@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-07-05)
 
 **Core value:** A judge or collector can open Tessera, understand the collectible market at a glance, and trust the numbers because every source, timestamp, and confidence band is visible — then drill into one category — all without explanation.
-**Current focus:** Phase 3 — API & Cache
+**Current focus:** Phase 4/5 — Frontend Integration (GATED on the Claude Design handoff)
 
 ## Current Position
 
-Phase: 3 of 6 (API & Cache)
-Plan: 0 of TBD in current phase
-Status: Phases 1–2 complete + verified; ready to plan Phase 3
-Last activity: 2026-07-06 — Phase 2 shipped & verified (risk + index engines, 2 plans, 38 tests, methodology conformance confirmed)
+Phase: 4 of 6 (Frontend Integration) — BLOCKED on the user's exported UI handoff folder
+Plan: —
+Status: **Backend complete (Phases 1–3 done + verified).** Awaiting the Claude Design frontend export to wire to the API. Phase 6 (deploy/demo) is with the user.
+Last activity: 2026-07-06 — Phase 3 shipped (API & cache, 2 plans, 48 tests). Backend complete.
 
-Progress: [███░░░░░░░] 33% (2 of 6 phases)
+Progress: [█████░░░░░] 50% (3 of 6 phases; backend fully done)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6 (Phases 1–2)
+- Total plans completed: 8 (Phases 1–3); 48 tests passing
 - Execution model: orchestrator executes plans inline (write-heavy GSD executor subagents stall on this Windows env — see memory `tessera-execute-directly`); read-heavy subagents (research/plan-check/verify) run fine
 
 **By Phase:**
@@ -28,6 +28,7 @@ Progress: [███░░░░░░░] 33% (2 of 6 phases)
 |-------|-------|--------|-------|
 | 1 — Data Layer & Metric Contract | 4/4 | ✓ verified | 25 tests, DATA-01/02/03 + PROV-02 |
 | 2 — Analytics Engines (Risk + Index) | 2/2 | ✓ verified | 13 core tests, IDX-02/03 + RISK-03/05 |
+| 3 — API & Cache | 2/2 | ✓ done | API-01 + SHIP-01 (config); runtime handler tests |
 
 **Recent Trend:**
 - Last plans: 01-01 scaffold, 01-02 metric envelope, 01-03 MockSource, 01-04 Renaiss adapter
@@ -64,5 +65,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-07-06
-Stopped at: Phases 1–2 complete & verified (data layer + analytics engines; 38 tests; all gates green). Next: Phase 3 (API & cache — wire source→engines→cached JSON API in `/api`, serving the shapes the Claude Design UI expects).
+Stopped at: **Backend complete (Phases 1–3).** Data layer + risk/index engines + cached JSON API (`/api/overview`, `/api/categories`, `/api/categories/:id`, `/api/index/:id`, `/api/health`); 48 tests; all gates green. Next: Phase 4/5 frontend integration — **gated on the user pointing to their exported Claude Design handoff folder**. Then Phase 6 deploy/demo (with user).
 Resume file: None
