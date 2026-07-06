@@ -5,33 +5,32 @@
 See: .planning/PROJECT.md (updated 2026-07-05)
 
 **Core value:** A judge or collector can open Tessera, understand the collectible market at a glance, and trust the numbers because every source, timestamp, and confidence band is visible — then drill into one category — all without explanation.
-**Current focus:** Phase 1 — Data Layer & Metric Contract
+**Current focus:** Phase 2 — Analytics Engines (Risk + Index)
 
 ## Current Position
 
-Phase: 1 of 6 (Data Layer & Metric Contract)
+Phase: 2 of 6 (Analytics Engines — Risk + Index)
 Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-07-05 — Roadmap created (6 phases, 23/23 v1 requirements mapped)
+Status: Phase 1 complete + verified; ready to plan Phase 2
+Last activity: 2026-07-06 — Phase 1 shipped & verified (data layer, 4 plans, 25 tests, all gates green)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██░░░░░░░░] 17% (1 of 6 phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: — min
-- Total execution time: 0.0 hours
+- Total plans completed: 4 (Phase 1)
+- Execution model: orchestrator executes plans inline (write-heavy GSD executor subagents stall on this Windows env — see memory `tessera-execute-directly`)
 
 **By Phase:**
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| - | - | - | - |
+| Phase | Plans | Status | Notes |
+|-------|-------|--------|-------|
+| 1 — Data Layer & Metric Contract | 4/4 | ✓ verified | 25 tests, DATA-01/02/03 + PROV-02 |
 
 **Recent Trend:**
-- Last 5 plans: —
-- Trend: —
+- Last plans: 01-01 scaffold, 01-02 metric envelope, 01-03 MockSource, 01-04 Renaiss adapter
+- Trend: green (tsc/vitest/build exit 0 throughout)
 
 *Updated after each plan completion*
 
@@ -39,32 +38,30 @@ Progress: [░░░░░░░░░░] 0%
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
+Decisions are logged in PROJECT.md Key Decisions table. Recent decisions affecting current work:
 
-- Mock/seed data first, behind a normalized `DataSource` seam — demo must never be blocked on the unresolved Renaiss data question; real sources swap in at one wiring point.
-- Deterministic, versioned, explainable risk engine (not ML/black box) — the score must show reconciling factors and a confidence band.
-- Every metric carries a `{ value | insufficient, confidence, sampleSize, source, asOf }` envelope — a bare/unsourced number is impossible by type.
+- Consume the real Renaiss Index API as the substrate; Tessera's compute is the RISK score Renaiss doesn't provide ("Renaiss gives the price; Tessera adds the risk lens").
+- Mock/seed data behind the `DataSource` seam is the demo-safe default; real source opt-in via `USE_RENAISS=1`; swap is one wiring point (`getDataSource`).
+- Every metric carries a `{ value | insufficient, confidence, sampleSize, source, asOf }` envelope — a bare/unsourced number is impossible by type. `INSUFFICIENT_DATA` is first-class.
+- Frontend built externally in Claude Design (brief: `tessera-ui-design-prompt.md`), handed off and wired here.
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
-- [Phase 2]: Three open methodology decisions must be resolved and recorded in `METHODOLOGY.md` before scores are defensible live — risk factor weights, thin-data/min-sample thresholds, and the index base-period definition. Flagged for `/gsd-research-phase`.
-- [Phase 1]: Seed fixtures must include a deliberately-thin category (PROV-02), a momentum spike, and a concentrated market, or later engine branches and the safety-state demo cannot be exercised.
+- [Phase 2]: Three open methodology decisions must be resolved and recorded in `METHODOLOGY.md` before scores are defensible live — risk factor weights, thin-data/min-sample thresholds (`src/core/thresholds.ts` placeholders MIN_SAMPLE=5, MAX_STALE_DAYS=30), and the index base-period definition.
 
 ## Deferred Items
 
-Items acknowledged and carried forward from previous milestone close:
-
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| *(none)* | | | |
+| Data layer | `RenaissSource.getRecentSales` uses the cross-card feed; per-category filtering | Phase 3 refinement | Phase 1 |
+| Frontend | Real UI (Overview + Category Detail) | External Claude Design handoff → wired Phase 4/5 | Phase 1 |
 
 ## Session Continuity
 
-Last session: 2026-07-05
-Stopped at: Roadmap and state initialized; requirements traceability populated (23/23 mapped).
+Last session: 2026-07-06
+Stopped at: Phase 1 (data layer) complete & verified — 9/9 must-haves, tsc/vitest/build all exit 0. Next: plan & build Phase 2 (risk + index engines; research-flagged for methodology numbers).
 Resume file: None

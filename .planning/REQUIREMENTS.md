@@ -86,10 +86,10 @@ Which phases cover which requirements. Populated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | Phase 1 — Data Layer & Metric Contract | Pending |
-| DATA-02 | Phase 1 — Data Layer & Metric Contract | Pending |
-| DATA-03 | Phase 1 — Data Layer & Metric Contract | Pending |
-| PROV-02 | Phase 1 — Data Layer & Metric Contract | Pending |
+| DATA-01 | Phase 1 — Data Layer & Metric Contract | Complete |
+| DATA-02 | Phase 1 — Data Layer & Metric Contract | Complete |
+| DATA-03 | Phase 1 — Data Layer & Metric Contract | Complete |
+| PROV-02 | Phase 1 — Data Layer & Metric Contract | Complete |
 | IDX-02 | Phase 2 — Analytics Engines (Risk + Index) | Pending |
 | IDX-03 | Phase 2 — Analytics Engines (Risk + Index) | Pending |
 | RISK-03 | Phase 2 — Analytics Engines (Risk + Index) | Pending |
