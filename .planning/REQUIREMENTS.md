@@ -95,7 +95,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | RISK-03 | Phase 2 — Analytics Engines (Risk + Index) | Complete |
 | RISK-05 | Phase 2 — Analytics Engines (Risk + Index) | Complete |
 | API-01 | Phase 3 — API & Cache | Complete |
-| SHIP-01 | Phase 3 — API & Cache | In Progress |
+| SHIP-01 | Phase 3 — API & Cache | Complete |
 | OVW-01 | Phase 4 — Frontend Views & Charts | Complete |
 | OVW-02 | Phase 4 — Frontend Views & Charts | Complete |
 | OVW-03 | Phase 4 — Frontend Views & Charts | Complete |
@@ -108,7 +108,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | RISK-04 | Phase 5 — Trust & Safety UI + Polish | Complete |
 | PROV-01 | Phase 5 — Trust & Safety UI + Polish | Complete |
 | PROV-03 | Phase 5 — Trust & Safety UI + Polish | Complete |
-| SHIP-02 | Phase 6 — Deploy, Demo & Submission | Pending |
+| SHIP-02 | Phase 6 — Deploy, Demo & Submission | In Progress |
 
 **Coverage:**
 - v1 requirements: 23 total (enumerated REQ-IDs across 8 categories; the earlier "21" summary undercounted — DATA×3, API×1, OVW×3, IDX×3, RISK×5, DET×3, PROV×3, SHIP×2 = 23)

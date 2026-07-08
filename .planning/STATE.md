@@ -11,10 +11,10 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
-Status: **App complete (Phases 1–5).** Full "Gilded Terminal" frontend (hero + overview + detail, Three.js hero, risk panel, insufficient states) wired to the live API; 48 tests + build green. Ready for Phase 6: Vercel deploy + demo (needs the user for Vercel auth + recording).
-Last activity: 2026-07-08 — Phases 4/5 shipped: Claude Design handoff rebuilt in React (8 real card categories) and wired to the API.
+Status: **DEPLOYED & LIVE → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot for CDN reliability; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
+Last activity: 2026-07-08 — deployed to Vercel; live SPA + JSON API verified (8 categories, risk spread, Lorcana insufficient live).
 
-Progress: [████████░░] 83% (5 of 6 phases)
+Progress: [█████████░] ~95% (deployed; demo recording + public-repo push remain)
 
 ## Performance Metrics
 
