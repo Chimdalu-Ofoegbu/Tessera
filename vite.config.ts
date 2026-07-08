@@ -1,7 +1,7 @@
 /// <reference types="vitest/config" />
 import { defineConfig, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import { fileURLToPath, URL } from 'node:url'
+import path from 'node:path'
 
 /**
  * Dev-only middleware that serves the same JSON API the Vercel `/api` functions
@@ -61,7 +61,7 @@ export default defineConfig({
   plugins: [react(), devApi()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': path.resolve(process.cwd(), 'src'),
     },
   },
   test: {
