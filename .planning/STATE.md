@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
 Status: **DEPLOYED & LIVE → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot for CDN reliability; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
-Last activity: 2026-07-08 — deployed to Vercel; live SPA + JSON API verified (8 categories, risk spread, Lorcana insufficient live).
+Last activity: 2026-07-08 — Completed quick task 260708-hoh: responsive nav + contained detail sales table (mobile/tablet), verified @375/768/1280; desktop unchanged. (Prior: deployed to Vercel; live SPA + JSON API verified.)
 
 Progress: [█████████░] ~95% (deployed; demo recording + public-repo push remain)
 
@@ -54,6 +54,12 @@ None.
 ### Blockers/Concerns
 
 - None. Phase 2 methodology resolved + verified (see `02-METHODOLOGY.md`; engines `risk@1.0.0` / `index@1.0.0`). Phase 4/5 frontend is gated on the user's Claude Design handoff.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260708-hoh | Responsive fixes: nav collapse + detail sales-table overflow (mobile/tablet) | 2026-07-08 | e3006bc | [260708-hoh-responsive-fixes-nav-collapse-detail-sal](./quick/260708-hoh-responsive-fixes-nav-collapse-detail-sal/) |
 
 ## Deferred Items
 
