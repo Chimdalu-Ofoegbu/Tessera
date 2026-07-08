@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-07-05)
 
 **Core value:** A judge or collector can open Tessera, understand the collectible market at a glance, and trust the numbers because every source, timestamp, and confidence band is visible — then drill into one category — all without explanation.
-**Current focus:** Phase 4/5 — Frontend Integration (GATED on the Claude Design handoff)
+**Current focus:** Phase 6 — Deploy, Demo & Submission (with the user)
 
 ## Current Position
 
-Phase: 4 of 6 (Frontend Integration) — BLOCKED on the user's exported UI handoff folder
+Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
-Status: **Backend complete (Phases 1–3 done + verified).** Awaiting the Claude Design frontend export to wire to the API. Phase 6 (deploy/demo) is with the user.
-Last activity: 2026-07-06 — Phase 3 shipped (API & cache, 2 plans, 48 tests). Backend complete.
+Status: **App complete (Phases 1–5).** Full "Gilded Terminal" frontend (hero + overview + detail, Three.js hero, risk panel, insufficient states) wired to the live API; 48 tests + build green. Ready for Phase 6: Vercel deploy + demo (needs the user for Vercel auth + recording).
+Last activity: 2026-07-08 — Phases 4/5 shipped: Claude Design handoff rebuilt in React (8 real card categories) and wired to the API.
 
-Progress: [█████░░░░░] 50% (3 of 6 phases; backend fully done)
+Progress: [████████░░] 83% (5 of 6 phases)
 
 ## Performance Metrics
 

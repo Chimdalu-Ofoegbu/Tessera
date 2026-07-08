@@ -96,18 +96,18 @@ Which phases cover which requirements. Populated during roadmap creation.
 | RISK-05 | Phase 2 — Analytics Engines (Risk + Index) | Complete |
 | API-01 | Phase 3 — API & Cache | Complete |
 | SHIP-01 | Phase 3 — API & Cache | In Progress |
-| OVW-01 | Phase 4 — Frontend Views & Charts | Pending |
-| OVW-02 | Phase 4 — Frontend Views & Charts | Pending |
-| OVW-03 | Phase 4 — Frontend Views & Charts | Pending |
-| IDX-01 | Phase 4 — Frontend Views & Charts | Pending |
-| RISK-01 | Phase 4 — Frontend Views & Charts | Pending |
-| RISK-02 | Phase 4 — Frontend Views & Charts | Pending |
-| DET-01 | Phase 4 — Frontend Views & Charts | Pending |
-| DET-02 | Phase 4 — Frontend Views & Charts | Pending |
-| DET-03 | Phase 4 — Frontend Views & Charts | Pending |
-| RISK-04 | Phase 5 — Trust & Safety UI + Polish | Pending |
-| PROV-01 | Phase 5 — Trust & Safety UI + Polish | Pending |
-| PROV-03 | Phase 5 — Trust & Safety UI + Polish | Pending |
+| OVW-01 | Phase 4 — Frontend Views & Charts | Complete |
+| OVW-02 | Phase 4 — Frontend Views & Charts | Complete |
+| OVW-03 | Phase 4 — Frontend Views & Charts | Complete |
+| IDX-01 | Phase 4 — Frontend Views & Charts | Complete |
+| RISK-01 | Phase 4 — Frontend Views & Charts | Complete |
+| RISK-02 | Phase 4 — Frontend Views & Charts | Complete |
+| DET-01 | Phase 4 — Frontend Views & Charts | Complete |
+| DET-02 | Phase 4 — Frontend Views & Charts | Complete |
+| DET-03 | Phase 4 — Frontend Views & Charts | Complete |
+| RISK-04 | Phase 5 — Trust & Safety UI + Polish | Complete |
+| PROV-01 | Phase 5 — Trust & Safety UI + Polish | Complete |
+| PROV-03 | Phase 5 — Trust & Safety UI + Polish | Complete |
 | SHIP-02 | Phase 6 — Deploy, Demo & Submission | Pending |
 
 **Coverage:**
