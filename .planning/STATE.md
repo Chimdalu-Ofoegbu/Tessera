@@ -11,8 +11,8 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
-Status: **DEPLOYED & LIVE → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot for CDN reliability; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
-Last activity: 2026-07-08 — Completed quick task 260708-kg5: strict light mode + removed the theme toggle (terminal, nav, and watchlist drawer now light-only); verified via computed styles, typecheck + build green. (Prior: 260708-hoh responsive fixes; Vercel deploy.)
+Status: **DEPLOYED & LIVE ON REAL RENAISS DATA → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot **generated from the live Renaiss Index API** — 2 categories, every metric `source: renaiss`, risk 8/11 scored, index base 100; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
+Last activity: 2026-07-08 — Completed quick task 260708-nmm: production cut over to live Renaiss data (mapper n-fallback fix so real series score; index-endpoint base fix; 7D/floor-value/source-label honesty pass; snapshot regenerated ≤8/10 rate budget; live-verified via API + browser). (Prior: 260708-kg5 light-only UI; 260708-hoh responsive fixes.)
 
 Progress: [█████████░] ~95% (deployed; demo recording + public-repo push remain)
 
@@ -61,6 +61,7 @@ None.
 |---|-------------|------|--------|-----------|
 | 260708-hoh | Responsive fixes: nav collapse + detail sales-table overflow (mobile/tablet) | 2026-07-08 | e3006bc | [260708-hoh-responsive-fixes-nav-collapse-detail-sal](./quick/260708-hoh-responsive-fixes-nav-collapse-detail-sal/) |
 | 260708-kg5 | Strict light mode; remove theme toggle (terminal + drawer light-only) | 2026-07-08 | 5ccddad | [260708-kg5-strict-light-mode-remove-theme-toggle](./quick/260708-kg5-strict-light-mode-remove-theme-toggle/) |
+| 260708-nmm | Fully live on Renaiss (real snapshot, n-fallback mapper fix, 7D/floor-value label honesty; gitignore already covered) | 2026-07-08 | c658fe5+371dbe9+1125728 | [260708-nmm-gitignore-design-assets-go-fully-live-on](./quick/260708-nmm-gitignore-design-assets-go-fully-live-on/) |
 
 ## Deferred Items
 
