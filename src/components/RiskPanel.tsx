@@ -90,7 +90,7 @@ export function RiskPanel({ ui, a, loading }: { ui: UI; a: CategoryAnalytics; lo
         )}
 
         <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 6, font: `500 9px ${mono}`, letterSpacing: '.14em', color: 'var(--t-ink3)' }}>
-          <span style={{ width: 4, height: 4, background: 'var(--t-live)', borderRadius: '50%' }} />SRC TESSERA RISK ENGINE · risk@1.0.0 · UPD {upd}
+          <span style={{ width: 4, height: 4, background: 'var(--t-live)', borderRadius: '50%' }} />SRC TESSERA RISK ENGINE · {isOk(a.risk) ? a.risk.value.version : 'risk@1.1.0'} · UPD {upd}
         </div>
       </div>
     </div>
