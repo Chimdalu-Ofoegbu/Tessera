@@ -77,7 +77,7 @@ export class RenaissSource implements DataSource {
     return cats
       .filter((c) => isOk(c.index))
       .slice(0, limit)
-      .map((c) => ({ id: c.id, label: c.label, deltaPct: c.deltas.d7, index: c.index }))
+      .map((c) => ({ id: c.id, code: c.code, label: c.label, deltaPct: c.change24h, change24h: c.change24h, index: c.index }))
   }
 
   async health(): Promise<Health> {

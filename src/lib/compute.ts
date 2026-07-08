@@ -17,14 +17,20 @@ const TTL = 60_000
 
 export interface CategoryCard {
   id: string
+  code: string
   game: string
   label: string
   index: Metric<number>
   base: number
+  change24h: number | null
   deltas: Category['deltas']
   sparkline: PricePoint[]
   updatedAt: string
   constituentCount: number
+  listings: number
+  sourceLabel: string
+  verifiedSales90d: number
+  salesThreshold: number
   risk: Metric<RiskBreakdown>
 }
 export interface CategoryAnalytics extends CategoryCard {
@@ -88,14 +94,20 @@ export async function buildCategoryAnalytics(source: DataSource, id: string, now
 
     return {
       id: detail.id,
+      code: detail.code,
       game: detail.game,
       label: detail.label,
       index: detail.index,
       base: detail.base,
+      change24h: detail.change24h,
       deltas: detail.deltas,
       sparkline: detail.sparkline,
       updatedAt: detail.updatedAt,
       constituentCount: detail.constituentCount,
+      listings: detail.listings,
+      sourceLabel: detail.sourceLabel,
+      verifiedSales90d: detail.verifiedSales90d,
+      salesThreshold: detail.salesThreshold,
       risk,
       constituents: detail.constituents,
       recentSales: detail.recentSales,
@@ -107,8 +119,8 @@ export async function buildCategoryAnalytics(source: DataSource, id: string, now
 }
 
 export function buildCategoryCard(a: CategoryAnalytics): CategoryCard {
-  const { id, game, label, index, base, deltas, sparkline, updatedAt, constituentCount, risk } = a
-  return { id, game, label, index, base, deltas, sparkline, updatedAt, constituentCount, risk }
+  const { id, code, game, label, index, base, change24h, deltas, sparkline, updatedAt, constituentCount, listings, sourceLabel, verifiedSales90d, salesThreshold, risk } = a
+  return { id, code, game, label, index, base, change24h, deltas, sparkline, updatedAt, constituentCount, listings, sourceLabel, verifiedSales90d, salesThreshold, risk }
 }
 
 export async function buildOverview(source: DataSource, now: number): Promise<Overview> {

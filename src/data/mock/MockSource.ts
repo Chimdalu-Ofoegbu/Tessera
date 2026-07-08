@@ -48,10 +48,10 @@ export class MockSource implements DataSource {
 
   async getFeaturedMovers(limit = 6): Promise<Mover[]> {
     return SEED_IDS.map((id) => SEED_BY_ID[id])
-      .filter((s) => isOk(s.index))
-      .sort((a, b) => Math.abs(b.deltas.d7 ?? 0) - Math.abs(a.deltas.d7 ?? 0))
+      .filter((s) => isOk(s.index) && s.change24h != null)
+      .sort((a, b) => Math.abs(b.change24h ?? 0) - Math.abs(a.change24h ?? 0))
       .slice(0, limit)
-      .map((s) => ({ id: s.id, label: s.label, deltaPct: s.deltas.d7, index: s.index }))
+      .map((s) => ({ id: s.id, code: s.code, label: s.label, deltaPct: s.change24h, change24h: s.change24h, index: s.index }))
   }
 
   async health(): Promise<Health> {

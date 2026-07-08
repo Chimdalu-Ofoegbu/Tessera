@@ -94,15 +94,22 @@ export function mapIndexTileToCategory(tile: RawIndexTile, now: number): Categor
   const sparkline = (tile.sparkline ?? []).map(mapSeriesPoint)
   const thin = sampleSize < MIN_SAMPLE || staleDays > MAX_STALE_DAYS || sparkline.length < MIN_SAMPLE
   const index: Metric<number> = thin ? insufficient(prov) : ok(tile.value, prov)
+  const code = tile.game === 'pokemon' ? 'PKM' : tile.game === 'one-piece' ? 'OPC' : tile.game === 'sports' ? 'SPT' : tile.game.slice(0, 3).toUpperCase()
   return {
     id: tile.game,
+    code,
     game: tile.game,
     label: tile.label,
     index,
     base: tile.base ?? 100,
+    change24h: tile.deltas?.d7 ?? null,
     deltas: { d7: tile.deltas?.d7 ?? null, d30: tile.deltas?.d30 ?? null, d365: tile.deltas?.d365 ?? null },
     constituentCount: sampleSize,
+    listings: sampleSize,
     sparkline,
+    sourceLabel: 'RENAISS INDEX',
+    verifiedSales90d: sampleSize,
+    salesThreshold: 25,
     updatedAt: tile.updatedAt ?? new Date(now).toISOString(),
   }
 }

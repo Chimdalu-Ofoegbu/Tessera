@@ -73,13 +73,23 @@ export const ConstituentSchema = z.object({
 /** A category tile. `index` is a Metric<number> so a thin category surfaces insufficiency at the tile level; `base` is the rebase anchor (100). */
 export const CategorySchema = z.object({
   id: z.string(),
+  code: z.string(),
   game: z.string(),
   label: z.string(),
   index: metricSchema(z.number()),
   base: z.number(),
+  /** 24h % change; sign drives the ▲/▼ + color. null when withheld (thin). */
+  change24h: z.number().nullable(),
   deltas: DeltasSchema,
   constituentCount: z.number().int().min(0),
+  /** Active listings count for the category. */
+  listings: z.number().int().min(0),
   sparkline: z.array(PricePointSchema),
+  /** Human-facing data-source label shown on the tile (e.g. "RENAISS INDEX"). */
+  sourceLabel: z.string(),
+  /** Verified sales in the trailing 90d + the publish threshold (drives the insufficient narrative). */
+  verifiedSales90d: z.number().int().min(0),
+  salesThreshold: z.number().int().min(0),
   updatedAt: z.string(),
 })
 

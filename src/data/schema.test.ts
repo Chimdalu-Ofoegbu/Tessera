@@ -54,13 +54,19 @@ describe('entity schemas', () => {
   it('a Category with an ok index parses and round-trips its id', () => {
     const cat = {
       id: 'pokemon',
+      code: 'PKB',
       game: 'pokemon',
       label: 'Pokémon',
       index: { ok: true, value: 112.3, provenance: prov },
       base: 100,
+      change24h: 1.2,
       deltas: { d7: 1.2, d30: 3.4, d365: null },
       constituentCount: 20,
+      listings: 1642,
       sparkline: [],
+      sourceLabel: 'RENAISS INDEX',
+      verifiedSales90d: 480,
+      salesThreshold: 25,
       updatedAt: '2026-06-01T00:00:00.000Z',
     }
     expect(CategorySchema.parse(cat).id).toBe('pokemon')

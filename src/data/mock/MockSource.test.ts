@@ -7,9 +7,9 @@ import { SEED_IDS } from '../fixtures'
 const src = new MockSource()
 
 describe('MockSource — seed data behind the port', () => {
-  it('returns all four seeded categories, each provenance-wrapped (source seed)', async () => {
+  it('returns all eight seeded categories, each provenance-wrapped (source seed)', async () => {
     const cats = await src.getCategories()
-    expect(cats.length).toBe(4)
+    expect(cats.length).toBe(8)
     for (const c of cats) {
       expect(() => CategorySchema.parse(c)).not.toThrow()
       expect(c.index.provenance.source).toBe('seed')
@@ -44,10 +44,10 @@ describe('MockSource — seed data behind the port', () => {
     await expect(src.getCategory('does-not-exist')).rejects.toThrow()
   })
 
-  it('movers exclude the insufficient category and are sorted by |d7|', async () => {
+  it('movers exclude the insufficient category and are sorted by |change24h|', async () => {
     const movers = await src.getFeaturedMovers()
     expect(movers.find((m) => m.id === 'lorcana')).toBeUndefined()
-    expect(movers[0].id).toBe('one-piece') // largest |d7| (12.4)
+    expect(movers[0].id).toBe('one-piece') // largest |change24h| (5.71)
   })
 
   it('getDataSource() returns a working source whose health is seed', async () => {

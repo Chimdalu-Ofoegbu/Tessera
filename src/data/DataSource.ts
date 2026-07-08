@@ -4,8 +4,10 @@ import type { Metric, SourceId } from './metric'
 /** A top-mover row for the overview. */
 export interface Mover {
   id: string
+  code: string
   label: string
   deltaPct: number | null
+  change24h: number | null
   index: Metric<number>
 }
 
