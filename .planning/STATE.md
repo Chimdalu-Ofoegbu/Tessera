@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
 Status: **DEPLOYED & LIVE → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot for CDN reliability; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
-Last activity: 2026-07-08 — Completed quick task 260708-hoh: responsive nav + contained detail sales table (mobile/tablet), verified @375/768/1280; desktop unchanged. (Prior: deployed to Vercel; live SPA + JSON API verified.)
+Last activity: 2026-07-08 — Completed quick task 260708-kg5: strict light mode + removed the theme toggle (terminal, nav, and watchlist drawer now light-only); verified via computed styles, typecheck + build green. (Prior: 260708-hoh responsive fixes; Vercel deploy.)
 
 Progress: [█████████░] ~95% (deployed; demo recording + public-repo push remain)
 
@@ -60,6 +60,7 @@ None.
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260708-hoh | Responsive fixes: nav collapse + detail sales-table overflow (mobile/tablet) | 2026-07-08 | e3006bc | [260708-hoh-responsive-fixes-nav-collapse-detail-sal](./quick/260708-hoh-responsive-fixes-nav-collapse-detail-sal/) |
+| 260708-kg5 | Strict light mode; remove theme toggle (terminal + drawer light-only) | 2026-07-08 | 5ccddad | [260708-kg5-strict-light-mode-remove-theme-toggle](./quick/260708-kg5-strict-light-mode-remove-theme-toggle/) |
 
 ## Deferred Items
 
