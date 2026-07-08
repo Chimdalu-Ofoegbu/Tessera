@@ -8,13 +8,6 @@ import { Detail } from './components/Detail'
 import { WatchlistDrawer } from './components/WatchlistDrawer'
 import { Footer } from './components/Footer'
 
-const readLS = (k: string, fallback: string): string => {
-  try {
-    return localStorage.getItem(k) ?? fallback
-  } catch {
-    return fallback
-  }
-}
 const readWatch = (): string[] => {
   try {
     const raw = localStorage.getItem('tesseraWatch')
@@ -43,17 +36,9 @@ export default function App() {
   const [cat, setCat] = useState<string>('pokemon')
   const [q, setQ] = useState('')
   const [drawer, setDrawer] = useState(false)
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => (readLS('tesseraTheme', 'dark') === 'light' ? 'light' : 'dark'))
   const [watch, setWatch] = useState<string[]>(() => readWatch())
   const reduced = usePrefersReducedMotion()
 
-  useEffect(() => {
-    try {
-      localStorage.setItem('tesseraTheme', theme)
-    } catch {
-      /* ignore */
-    }
-  }, [theme])
   useEffect(() => {
     try {
       localStorage.setItem('tesseraWatch', JSON.stringify(watch))
@@ -81,9 +66,8 @@ export default function App() {
 
   const ui = useMemo<UI>(
     () => ({
-      dark: theme === 'dark',
-      theme,
-      toggleTheme: () => setTheme((t) => (t === 'dark' ? 'light' : 'dark')),
+      dark: false,
+      theme: 'light',
       motion: !reduced,
       watch,
       isWatched: (id) => watch.includes(id),
@@ -98,7 +82,7 @@ export default function App() {
       q,
       setQ,
     }),
-    [theme, reduced, watch, q, openCat, goHome, goOverview],
+    [reduced, watch, q, openCat, goHome, goOverview],
   )
 
   return (

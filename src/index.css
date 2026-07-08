@@ -107,6 +107,4 @@ a:hover { color: #6e5514; }
   .nav-bar { gap: 14px !important; padding-left: 16px !important; padding-right: 16px !important; }
   /* Hide the whole search group — MARKETS is redundant with the detail breadcrumb and the Enter Terminal button. */
   .nav-search { display: none !important; }
-  /* Theme toggle collapses to its icon. */
-  .nav-btn-label { display: none !important; }
 }

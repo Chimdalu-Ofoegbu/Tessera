@@ -53,24 +53,13 @@ export function Nav({ ui, screen }: { ui: UI; screen: Screen }) {
         <Logo ui={ui} home={home} />
         <SearchGroup ui={ui} home={home} />
         {!home && (
-          <>
-            <button
-              className="btn-ghost"
-              onClick={ui.toggleTheme}
-              title="Toggle dark / light theme"
-              style={{ flex: 'none', marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, font: '600 9.5px var(--f-mono)', letterSpacing: '.14em', padding: '8px 13px' }}
-            >
-              <span style={{ fontSize: 12, lineHeight: 1 }}>{ui.dark ? '☀' : '☾'}</span>
-              <span className="nav-btn-label">{ui.dark ? 'LIGHT' : 'DARK'}</span>
-            </button>
-            <button
-              className="btn-watch"
-              onClick={ui.toggleDrawer}
-              style={{ flex: 'none', display: 'flex', alignItems: 'center', gap: 8, font: '600 13px var(--f-display)', padding: '9px 16px' }}
-            >
-              Watchlist <span style={{ font: '600 11px var(--f-mono)', background: 'rgba(242,237,227,.2)', borderRadius: 5, padding: '1px 6px' }}>{ui.watch.length}</span>
-            </button>
-          </>
+          <button
+            className="btn-watch"
+            onClick={ui.toggleDrawer}
+            style={{ flex: 'none', marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, font: '600 13px var(--f-display)', padding: '9px 16px' }}
+          >
+            Watchlist <span style={{ font: '600 11px var(--f-mono)', background: 'rgba(242,237,227,.2)', borderRadius: 5, padding: '1px 6px' }}>{ui.watch.length}</span>
+          </button>
         )}
       </div>
     </div>

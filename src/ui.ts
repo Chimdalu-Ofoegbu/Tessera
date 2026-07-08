@@ -4,7 +4,6 @@ import type React from 'react'
 export interface UI {
   dark: boolean
   theme: 'dark' | 'light'
-  toggleTheme: () => void
   motion: boolean
   watch: string[]
   isWatched: (id: string) => boolean
