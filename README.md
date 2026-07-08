@@ -12,12 +12,12 @@ Every number carries its **source + freshness timestamp + confidence**, the risk
 
 ```jsonc
 // a "metric" is never a bare number:
-{ "ok": true, "value": 128.4, "provenance": { "source": "seed", "asOf": "2026-07-01T00:00:00.000Z", "confidence": "high", "sampleSize": 42 } }
+{ "ok": true, "value": 11255.69, "provenance": { "source": "renaiss", "asOf": "2026-07-07T00:00:00.000Z", "confidence": "high", "sampleSize": 50 } }
 // or, when data is thin:
-{ "ok": false, "insufficient": true, "provenance": { "source": "seed", "asOf": "…", "confidence": "low", "sampleSize": 2 } }
+{ "ok": false, "insufficient": true, "provenance": { "source": "renaiss", "asOf": "…", "confidence": "low", "sampleSize": 2 } }
 ```
 
-In production the API is a **pre-generated static snapshot** (CDN-served for reliability), so endpoints carry a `.json` suffix. (The equivalent serverless handlers live in `api/*.ts` and serve the extension-less paths in local dev.)
+In production the API is a **pre-generated static snapshot of the live Renaiss Index API** — fetched through the `RenaissSource` adapter, scored by Tessera's engines, CDN-served for reliability (the public Renaiss tier allows 10 req/day, so per-request proxying is off the table by design). Endpoints carry a `.json` suffix. (The equivalent serverless handlers live in `api/*.ts` and serve the extension-less paths in local dev.)
 
 | Endpoint | Returns |
 |----------|---------|
@@ -27,13 +27,13 @@ In production the API is a **pre-generated static snapshot** (CDN-served for rel
 | `GET /api/index/{id}.json` | `{ id, base: 100, indexSeries }` — VWAP index rebased to 100, with explicit `null` gaps for thin periods |
 | `GET /api/health.json` | `{ ok, source }` — liveness + active data source |
 
-Category ids: `pokemon`, `pokemon-jpn`, `pokemon-modern`, `one-piece`, `one-piece-emp`, `sports`, `sports-vintage`, `lorcana` (deliberately thin → insufficient).
+Category ids: the games the live Renaiss Index publishes — currently `pokemon` and `one-piece` (the set expands automatically when Renaiss lists more; regenerating the snapshot picks them up). Any tile that is thin, stale, or short-series renders `insufficient` rather than a fabricated value.
 
 **Risk score** (`RiskBreakdown`): a 0–100 composite of four factors — `liquidity`, `volatility`, `concentration`, `dataConfidence` — each with `{ raw, weight, contribution }` that **sum to the headline `score`**, plus a `band` (±). Methodology: [`.planning/phases/02-analytics-engines-risk-index/02-METHODOLOGY.md`](.planning/phases/02-analytics-engines-risk-index/02-METHODOLOGY.md).
 
 ## Data source
 
-Tessera runs on clearly-labeled **seed data by default** (demo-safe, reliable) behind a `DataSource` port. To use the live **Renaiss Index API** (`https://api.renaissos.com/v1`), set `USE_RENAISS=1` (optionally `RENAISS_API_KEY` / `RENAISS_API_SECRET` for the partner tier). The swap is one wiring point; nothing else changes. Data attribution: the Renaiss Index API.
+**Production runs on live Renaiss Index data** (`https://api.renaissos.com/v1`), pulled through the `RenaissSource` adapter and shipped as the static snapshot above — every metric carries `source: "renaiss"`. Local dev and tests default to clearly-labeled seed fixtures (`MockSource`) behind the same `DataSource` port; set `USE_RENAISS=1` (optionally `RENAISS_API_KEY` / `RENAISS_API_SECRET` for the partner tier) to point dev at the live API. The swap is one wiring point; nothing else changes. Refreshing the prod snapshot: `USE_RENAISS=1 pnpm dev --port 5199`, curl the `/api/*.json` endpoints into `public/api/` (≈5 upstream calls — inside the public tier), rebuild, redeploy. Data attribution: the Renaiss Index API.
 
 ## Stack
 
@@ -44,7 +44,7 @@ Vite + React 19 + TypeScript · zod (single schema source) · Vitest · TanStack
 ```bash
 pnpm install
 pnpm dev          # SPA + /api served by the Vite dev middleware — http://localhost:5173
-pnpm test         # unit tests (data layer, engines, compute, handlers) — 48 tests
+pnpm test         # unit tests (data layer, engines, compute, handlers) — 49 tests
 pnpm typecheck    # tsc (separate from build)
 pnpm build        # production build → dist/ (includes the static /api snapshot)
 ```
