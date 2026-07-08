@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useOverview } from '@/api/hooks'
 import { isOk, fmtNum, fmtInt, pct, arrow, srcLine, timeUTC } from '@/lib/view'
-import { createHeroScene, type HeroCard } from '@/three/heroScene'
+import type { HeroCard } from '@/three/heroScene'
 import type { UI } from '@/ui'
 
 const mono = 'var(--f-mono)'
@@ -56,11 +56,14 @@ export function Hero({ ui }: { ui: UI }) {
     }))
     let scene: { dispose: () => void } | null = null
     let alive = true
-    const start = () => {
+    const start = async () => {
+      if (!alive || !canvasRef.current) return
+      // Lazy-load Three.js so it isn't in the initial bundle (only the hero needs it).
+      const { createHeroScene } = await import('@/three/heroScene')
       if (alive && canvasRef.current) scene = createHeroScene(canvasRef.current, heroCards, { motion: ui.motion, onOpen: ui.openCat })
     }
-    if (document.fonts?.ready) document.fonts.ready.then(start).catch(start)
-    else start()
+    if (document.fonts?.ready) document.fonts.ready.then(() => void start()).catch(() => void start())
+    else void start()
     return () => {
       alive = false
       scene?.dispose()
