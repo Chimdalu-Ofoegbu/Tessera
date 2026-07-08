@@ -4,3 +4,6 @@ dist
 tessera-build-spec.md
 Tessera - UI Handoff
 Tessera - Brand Social Assets
+# Serverless functions fail to bundle ../src on Vercel; prod serves the static
+# snapshot in public/api/ instead. Keep /api in-repo for local dev + tests only.
+/api

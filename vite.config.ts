@@ -16,7 +16,7 @@ function devApi(): Plugin {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || ''
         if (!url.startsWith('/api/')) return next()
-        const path = url.split('?')[0]
+        const path = url.split('?')[0].replace(/\.json$/, '')
         const json = (code: number, body: unknown) => {
           res.statusCode = code
           res.setHeader('content-type', 'application/json')
