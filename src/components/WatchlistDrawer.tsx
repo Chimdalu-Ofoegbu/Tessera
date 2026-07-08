@@ -11,7 +11,7 @@ export function WatchlistDrawer({ ui }: { ui: UI }) {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 60 }}>
       <div onClick={ui.toggleDrawer} style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,.55)', backdropFilter: 'blur(3px)' }} />
-      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 344, background: '#1A1610', borderLeft: '1px solid rgba(242,237,227,.18)', padding: '24px 22px', overflow: 'auto' }}>
+      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 'min(344px, 88vw)', background: '#1A1610', borderLeft: '1px solid rgba(242,237,227,.18)', padding: '24px 22px', overflow: 'auto' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
           <div style={{ font: '800 14px var(--f-display)', fontStretch: '115%', letterSpacing: '.22em', color: '#F2EDE3' }}>WATCHLIST</div>
           <button className="btn-ghost" onClick={ui.toggleDrawer} style={{ background: '#241E15', borderColor: 'rgba(242,237,227,.25)', color: '#B5AC99', font: `500 10px ${mono}`, padding: '6px 9px' }}>ESC</button>

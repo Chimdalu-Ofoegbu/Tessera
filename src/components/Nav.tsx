@@ -24,7 +24,7 @@ function SearchGroup({ ui, home }: { ui: UI; home: boolean }) {
   const hair = home ? 'rgba(27,23,16,.22)' : 'var(--t-hair2)'
   const ink = home ? '#1B1710' : 'var(--t-ink)'
   return (
-    <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: 16 }}>
+    <div className="nav-search" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: 16 }}>
       <div
         onClick={ui.goOverview}
         style={{ font: "600 10.5px var(--f-mono)", letterSpacing: '.18em', color: gold, borderBottom: `1px solid ${goldB}`, padding: '4px 1px', cursor: 'pointer', flex: 'none' }}
@@ -49,7 +49,7 @@ export function Nav({ ui, screen }: { ui: UI; screen: Screen }) {
     : { position: 'sticky', top: 0, zIndex: 50, background: 'var(--t-navbg)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--t-hair)' }
   return (
     <div {...(!home ? { 'data-tt-theme': ui.theme } : {})} style={wrap}>
-      <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 24, height: 60, maxWidth: 1440, margin: '0 auto', padding: '0 32px' }}>
+      <div className="nav-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 24, height: 60, maxWidth: 1440, margin: '0 auto', padding: '0 32px' }}>
         <Logo ui={ui} home={home} />
         <SearchGroup ui={ui} home={home} />
         {!home && (
@@ -61,7 +61,7 @@ export function Nav({ ui, screen }: { ui: UI; screen: Screen }) {
               style={{ flex: 'none', marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, font: '600 9.5px var(--f-mono)', letterSpacing: '.14em', padding: '8px 13px' }}
             >
               <span style={{ fontSize: 12, lineHeight: 1 }}>{ui.dark ? '☀' : '☾'}</span>
-              {ui.dark ? 'LIGHT' : 'DARK'}
+              <span className="nav-btn-label">{ui.dark ? 'LIGHT' : 'DARK'}</span>
             </button>
             <button
               className="btn-watch"

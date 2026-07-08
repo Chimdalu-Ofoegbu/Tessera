@@ -92,3 +92,21 @@ a:hover { color: #6e5514; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .spark-path, .chart-line { stroke-dashoffset: 0 !important; }
 }
+
+/* ---- Responsive nav ----
+   Desktop (≥961px) keeps the absolutely-centered search exactly as designed.
+   Below that the centered search can't reflow, so it collides with the logo and the
+   Dark/Watchlist buttons — un-float it, then shed non-essential controls as width shrinks. */
+@media (max-width: 960px) {
+  /* Stop the search group floating so it can no longer overlap the logo or the action buttons. */
+  .nav-search { position: static !important; left: auto !important; transform: none !important; }
+  /* Drop the search input (secondary feature); the MARKETS link stays. */
+  .nav-search .search-input { display: none !important; }
+}
+@media (max-width: 620px) {
+  .nav-bar { gap: 14px !important; padding-left: 16px !important; padding-right: 16px !important; }
+  /* Hide the whole search group — MARKETS is redundant with the detail breadcrumb and the Enter Terminal button. */
+  .nav-search { display: none !important; }
+  /* Theme toggle collapses to its icon. */
+  .nav-btn-label { display: none !important; }
+}

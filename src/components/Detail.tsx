@@ -80,6 +80,7 @@ function RecentSales({ a }: { a: CategoryAnalytics }) {
       </div>
       {isOk(a.risk) ? (
         <>
+          <div style={{ overflowX: 'auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: cols, gap: 12, padding: '10px 8px', borderBottom: '1px solid var(--t-headRule)', font: `600 9px ${mono}`, letterSpacing: '.16em', color: 'var(--t-ink3)' }}>
             <span>LOT</span><span>SOLD</span><span style={{ textAlign: 'right' }}>PRICE</span><span style={{ textAlign: 'right' }}>VS FLOOR</span><span style={{ textAlign: 'right' }}>VENUE</span>
           </div>
@@ -92,6 +93,7 @@ function RecentSales({ a }: { a: CategoryAnalytics }) {
               <span style={{ font: `500 11px ${mono}`, color: 'var(--t-ink3)', textAlign: 'right' }}>{s.source}</span>
             </div>
           ))}
+          </div>
           <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 6, font: `500 9px ${mono}`, letterSpacing: '.14em', color: 'var(--t-ink3)' }}>
             <span style={{ width: 4, height: 4, background: 'var(--t-live)', borderRadius: '50%' }} />SRC {a.sourceLabel} · UPD {upd} · UNVERIFIED SALES EXCLUDED
           </div>
