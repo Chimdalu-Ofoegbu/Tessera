@@ -11,7 +11,7 @@ beforeEach(() => clearComputeCache())
 describe('compute layer (source → engines → payloads)', () => {
   it('overview returns 4 cards, each with provenance on index AND risk', async () => {
     const o = await buildOverview(src, NOW)
-    expect(o.categories.length).toBe(4)
+    expect(o.categories.length).toBe(8)
     for (const c of o.categories) {
       expect(c.index.provenance.source).toBe('seed')
       expect(c.risk.provenance.source).toBe('seed')

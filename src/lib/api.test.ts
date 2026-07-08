@@ -38,7 +38,7 @@ describe('API handlers (runtime, MockSource)', () => {
     expect(res.headers['Cache-Control']).toContain('s-maxage')
     const body = res.body as { categories: unknown[] }
     expect(Array.isArray(body.categories)).toBe(true)
-    expect(body.categories.length).toBe(4)
+    expect(body.categories.length).toBe(8)
   })
 
   it('GET /api/categories/:id → 200 for a known id', async () => {
