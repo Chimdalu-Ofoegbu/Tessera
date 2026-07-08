@@ -90,7 +90,7 @@ function makeCardTexture(card: HeroCard | null): THREE.CanvasTexture {
     x.fillStyle = '#4C4638'; x.font = '600 18px ' + sans; x.fillText(card.name, 30, 102, W - 60)
     x.fillStyle = '#1B1710'; x.font = '500 44px ' + mono; x.fillText(card.idx, 30, 188)
     x.font = '600 17px ' + mono
-    if (card.scored) { x.fillStyle = card.up ? '#256B57' : '#A8442F'; x.fillText(card.chg + '  24H', 30, 220) }
+    if (card.scored) { x.fillStyle = card.up ? '#256B57' : '#A8442F'; x.fillText(card.chg + '  7D', 30, 220) }
     else { x.fillStyle = '#6E6759'; x.fillText('BELOW THRESHOLD', 30, 220) }
     if (card.scored && card.spark.length > 1) {
       const px = 30, py = 258, pw = W - 60, ph = 84

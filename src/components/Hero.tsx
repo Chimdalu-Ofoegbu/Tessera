@@ -103,12 +103,12 @@ export function Hero({ ui }: { ui: UI }) {
         <div style={{ pointerEvents: 'auto', marginTop: 92, display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }} className="rise">
           <div style={{ padding: '0 26px', textAlign: 'left' }}>
             <div style={{ font: `500 30px ${mono}`, color: '#1B1710' }}>${volM.toFixed(1)}M</div>
-            <div style={{ font: `500 9.5px ${mono}`, letterSpacing: '.18em', color: '#6E6759', marginTop: 5 }}>VOLUME — TRAILING 30D</div>
+            <div style={{ font: `500 9.5px ${mono}`, letterSpacing: '.18em', color: '#6E6759', marginTop: 5 }}>FLOOR VALUE — LISTINGS</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, font: `500 9px ${mono}`, letterSpacing: '.1em', color: '#6E6759', marginTop: 4 }}>
               <span style={{ width: 4, height: 4, background: '#2E8065', borderRadius: '50%' }} />SRC RENAISS INDEX · UPD {upd}
             </div>
           </div>
-          <Counter big={fmtInt(listings)} label="ACTIVE LISTINGS" src={`SRC AUCTION FEED · UPD ${upd}`} />
+          <Counter big={fmtInt(listings)} label="ACTIVE LISTINGS" src={`SRC RENAISS INDEX · UPD ${upd}`} />
           <Counter big={String(Math.round(count))} label="CATEGORY INDICES" src={`SRC RENAISS INDEX · UPD ${upd}`} />
         </div>
       </div>

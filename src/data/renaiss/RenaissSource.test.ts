@@ -10,6 +10,8 @@ import {
   type RawTrade,
 } from './map'
 import { CategoryDetailSchema, CategorySchema, SaleSchema } from '../schema'
+import { buildIndex } from '../../core/indexEngine'
+import { computeRisk } from '../../core/risk'
 import { getDataSource } from '../getDataSource'
 import { MockSource } from '../mock/MockSource'
 import { RenaissSource } from './RenaissSource'
@@ -30,6 +32,34 @@ describe('Renaiss mappers (captured JSON, no live call)', () => {
   it('maps a thin tile to an INSUFFICIENT index (safety preserved on real data)', () => {
     const cat = mapIndexTileToCategory(indices[1], NOW)
     expect(cat.index.ok).toBe(false)
+  })
+
+  it('live-shaped sparkline (no per-point n) inherits the tile constituent backing and still publishes', () => {
+    // The real /v1/indices payload (observed 2026-07-08) omits `n` on sparkline points —
+    // an already-aggregated daily index series. Absent disclosure must not read as "0 observations".
+    const live: RawIndexTile = {
+      game: 'pokemon',
+      label: 'Pokémon · Index',
+      value: 11255.7,
+      constituentCount: 50,
+      updatedAt: '2026-07-01T00:00:00.000Z',
+      sparkline: Array.from({ length: 30 }, (_, i) => ({
+        t: new Date(Date.parse('2026-06-01T00:00:00.000Z') + i * 86_400_000).toISOString(),
+        usdCents: 1_100_000 + i * 5_000,
+      })),
+    }
+    const cat = mapIndexTileToCategory(live, NOW)
+    expect(cat.index.ok).toBe(true)
+    expect(cat.sparkline.every((p) => p.n === 50)).toBe(true)
+    // The exact regression: both engines must publish over this series, not render insufficient.
+    const prov = cat.index.provenance
+    const idx = buildIndex({ series: cat.sparkline, source: prov.source, asOf: prov.asOf, confidence: prov.confidence, sampleSize: prov.sampleSize })
+    expect(idx.ok).toBe(true)
+    const risk = computeRisk({ series: cat.sparkline, constituentValuesCents: [500_000, 400_000, 300_000], sampleSize: prov.sampleSize, confidence: prov.confidence, asOf: prov.asOf, source: prov.source, now: NOW })
+    expect(risk.ok).toBe(true)
+    // An explicitly disclosed n is preserved, not overwritten.
+    const disclosed = mapIndexTileToCategory({ ...live, sparkline: [{ t: '2026-06-01T00:00:00.000Z', usdCents: 1_000_000, n: 7 }, ...live.sparkline!.slice(1)] }, NOW)
+    expect(disclosed.sparkline[0].n).toBe(7)
   })
 
   it('builds a schema-valid CategoryDetail; a null-price card maps to insufficient (no fabricated 0)', () => {

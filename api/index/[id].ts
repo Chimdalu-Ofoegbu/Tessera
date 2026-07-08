@@ -10,7 +10,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     const a = await buildCategoryAnalytics(getDataSource(), id, Date.now())
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300')
     res.setHeader('content-type', 'application/json')
-    res.status(200).json({ id: a.id, base: a.base, window, indexSeries: a.indexSeries })
+    // `base` = the rebased series basis (always 100 when published) — NOT the source's own
+    // index base level (a.base), which live Renaiss reports in its native scale (e.g. 10000).
+    res.status(200).json({ id: a.id, base: 100, window, indexSeries: a.indexSeries })
   } catch (err) {
     const msg = err instanceof Error ? err.message : ''
     if (msg.includes('Unknown category')) res.status(404).json({ error: 'unknown category', id })

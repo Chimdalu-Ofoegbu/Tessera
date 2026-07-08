@@ -78,7 +78,12 @@ function RecentSales({ a }: { a: CategoryAnalytics }) {
         <div style={{ font: `600 10px ${mono}`, letterSpacing: '.2em', color: 'var(--t-gold)' }}>RECENT SALES</div>
         <div style={{ font: `500 9px ${mono}`, letterSpacing: '.1em', color: 'var(--t-ink3)' }}>VERIFIED · LAST 30D</div>
       </div>
-      {isOk(a.risk) ? (
+      {isOk(a.risk) && a.recentSales.length === 0 ? (
+        <div style={{ marginTop: 8, border: '1px dashed var(--t-dash)', borderRadius: 10, padding: 22, textAlign: 'center' }}>
+          <div style={{ font: '500 13px var(--f-display)', color: 'var(--t-ink2)' }}>No per-sale records disclosed by the source for this window.</div>
+          <div style={{ marginTop: 8, font: `500 9px ${mono}`, letterSpacing: '.14em', color: 'var(--t-ink3)' }}>SRC {a.sourceLabel} · UPD {upd} · NOTHING WITHHELD BY TESSERA</div>
+        </div>
+      ) : isOk(a.risk) ? (
         <>
           <div style={{ overflowX: 'auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: cols, gap: 12, padding: '10px 8px', borderBottom: '1px solid var(--t-headRule)', font: `600 9px ${mono}`, letterSpacing: '.16em', color: 'var(--t-ink3)' }}>
@@ -130,7 +135,6 @@ export function Detail({ ui, catId }: { ui: UI; catId: string }) {
   if (isLoading || !a) return wrap(<div style={{ font: `500 11px ${mono}`, letterSpacing: '.14em', color: 'var(--t-ink3)', padding: '40px 0' }}>LOADING CATEGORY…</div>)
 
   const watched = ui.isWatched(a.id)
-  const upd = timeUTC(a.updatedAt)
   const src = srcLine(a.sourceLabel, a.updatedAt)
   const loading = rangeLoading
 
@@ -158,8 +162,8 @@ export function Detail({ ui, catId }: { ui: UI; catId: string }) {
           <div style={{ marginTop: 10, font: `500 9.5px ${mono}`, letterSpacing: '.08em', color: 'var(--t-ink3)' }}>{src}</div>
         </div>
         <StatCell label="FLOOR PRICE" value={centsToMoney(a.floor)} sub={`LOWEST VERIFIED ASK · ${src}`} />
-        <StatCell label="VOLUME — 30D" value={money(a.volume.cents)} sub={`SRC AUCTION FEED · UPD ${upd}`} />
-        <StatCell label="ACTIVE LISTINGS" value={fmtInt(a.listings)} sub={`SRC AUCTION FEED · UPD ${upd}`} />
+        <StatCell label="FLOOR VALUE — LISTINGS" value={money(a.volume.cents)} sub={`FLOOR × LISTINGS · ${src}`} />
+        <StatCell label="ACTIVE LISTINGS" value={fmtInt(a.listings)} sub={src} />
       </div>
 
       <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'stretch', marginTop: 14 }}>

@@ -78,7 +78,7 @@ export const CategorySchema = z.object({
   label: z.string(),
   index: metricSchema(z.number()),
   base: z.number(),
-  /** 24h % change; sign drives the ▲/▼ + color. null when withheld (thin). */
+  /** Display % change (the 7-day delta on the live Renaiss source); sign drives the ▲/▼ + color. null when withheld (thin). */
   change24h: z.number().nullable(),
   deltas: DeltasSchema,
   constituentCount: z.number().int().min(0),

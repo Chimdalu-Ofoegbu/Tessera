@@ -43,7 +43,7 @@ export function IndexCard({ ui, card }: { ui: UI; card: CategoryCard }) {
             <div>
               <div style={{ font: '500 30px var(--f-mono)', color: 'var(--t-ink)', letterSpacing: '-.02em', lineHeight: 1 }}>{fmtNum(card.index.value)}</div>
               <div style={{ font: '600 11px var(--f-mono)', color: chgCol, marginTop: 7 }}>
-                {arrow(chg)} {chg != null ? pct(chg) : ''} <span style={{ color: 'var(--t-ink3)', fontWeight: 500 }}>24H</span>
+                {arrow(chg)} {chg != null ? pct(chg) : ''} <span style={{ color: 'var(--t-ink3)', fontWeight: 500 }}>7D</span>
               </div>
             </div>
             <svg viewBox="0 0 120 34" style={{ width: 118, height: 34, flex: 'none', display: 'block', overflow: 'visible', marginBottom: 2 }}>

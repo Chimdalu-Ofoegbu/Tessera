@@ -52,19 +52,19 @@ export function Overview({ ui }: { ui: UI }) {
 
       <div style={{ marginTop: 18, border: '1px solid var(--t-hair2)', borderRadius: 14, overflow: 'hidden', background: 'var(--t-panel)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(290px,1fr))' }}>
         <div style={{ position: 'relative', background: 'radial-gradient(130% 100% at 25% 0%,var(--t-radA),var(--t-radB) 55%),var(--t-panel)', padding: '24px 26px', boxShadow: '0 0 0 .5px var(--t-seam)' }}>
-          <div style={{ font: `600 10px ${mono}`, letterSpacing: '.2em', color: 'var(--t-ink2)' }}>TOTAL VOLUME — TRAILING 30D</div>
+          <div style={{ font: `600 10px ${mono}`, letterSpacing: '.2em', color: 'var(--t-ink2)' }}>TOTAL FLOOR VALUE — ACTIVE LISTINGS</div>
           <div style={{ font: `500 46px ${mono}`, letterSpacing: '-.04em', color: 'var(--t-ink)', lineHeight: 1, marginTop: 16 }}>{money(data.totalVolume.cents)}</div>
-          <div style={{ font: `500 11.5px ${mono}`, color: changeColor(avg24, ui.dark), marginTop: 9 }}>{arrow(avg24)} {pct(avg24)} AVG INDEX · 24H</div>
+          <div style={{ font: `500 11.5px ${mono}`, color: changeColor(avg24, ui.dark), marginTop: 9 }}>{arrow(avg24)} {pct(avg24)} AVG INDEX · 7D</div>
           {srcDot(`SRC RENAISS INDEX · UPD ${upd}`)}
         </div>
         <div style={{ background: 'var(--t-panel)', padding: '24px 26px', boxShadow: '0 0 0 .5px var(--t-seam)' }}>
           <div style={{ font: `600 10px ${mono}`, letterSpacing: '.2em', color: 'var(--t-ink2)' }}>ACTIVE LISTINGS</div>
           <div style={{ font: `500 38px ${mono}`, letterSpacing: '-.04em', color: 'var(--t-ink)', lineHeight: 1.1, marginTop: 18 }}>{fmtInt(data.totalListings)}</div>
-          <div style={{ font: `500 11px ${mono}`, color: 'var(--t-ink3)', marginTop: 9 }}>{cats.length} CATEGORIES · 6 VENUES</div>
-          {srcDot(`SRC AUCTION FEED · UPD ${upd}`)}
+          <div style={{ font: `500 11px ${mono}`, color: 'var(--t-ink3)', marginTop: 9 }}>{cats.length} {cats.length === 1 ? 'CATEGORY' : 'CATEGORIES'} TRACKED</div>
+          {srcDot(`SRC RENAISS INDEX · UPD ${upd}`)}
         </div>
         <div style={{ background: 'var(--t-panel)', padding: '20px 22px', boxShadow: '0 0 0 .5px var(--t-seam)' }}>
-          <div style={{ font: `600 10px ${mono}`, letterSpacing: '.2em', color: 'var(--t-ink2)', marginBottom: 12 }}>TOP MOVERS — 24H</div>
+          <div style={{ font: `600 10px ${mono}`, letterSpacing: '.2em', color: 'var(--t-ink2)', marginBottom: 12 }}>TOP MOVERS — 7D</div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {movers.map((m) => (
               <div key={m.id} className="mover-row" onClick={() => ui.openCat(m.id)} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '9px 8px', margin: '0 -8px', borderTop: '1px solid var(--t-line)' }}>

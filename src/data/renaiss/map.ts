@@ -75,12 +75,20 @@ export function mapProvenance(sampleSize: number, asOf: string | null | undefine
   }
 }
 
-export function mapSeriesPoint(p: RawSeriesPoint): PricePoint {
+/**
+ * `fallbackN`: the live index sparkline is an already-aggregated daily series — each point is a
+ * published index level backed by the tile's constituent set, but the API does not disclose a
+ * per-point sample count. Reading absent/zero `n` as "0 observations" would falsely mark healthy
+ * real data insufficient, so such points inherit the tile's constituentCount instead. A genuinely
+ * thin tile still gates to insufficient upstream (sampleSize / staleness / series length).
+ */
+export function mapSeriesPoint(p: RawSeriesPoint, fallbackN = 0): PricePoint {
   const kind = p.kind === 'transaction' || p.kind === 'listing' ? p.kind : null
+  const disclosed = p.n ?? 0
   return {
     t: p.t,
     usdCents: Math.max(0, Math.round(p.usdCents)),
-    n: p.n ?? 0,
+    n: disclosed > 0 ? disclosed : fallbackN,
     kind,
     source: 'renaiss',
     bucket: p.bucket ?? null,
@@ -91,7 +99,7 @@ export function mapIndexTileToCategory(tile: RawIndexTile, now: number): Categor
   const sampleSize = tile.constituentCount ?? 0
   const staleDays = ageDays(tile.updatedAt, now)
   const prov = mapProvenance(sampleSize, tile.updatedAt, now)
-  const sparkline = (tile.sparkline ?? []).map(mapSeriesPoint)
+  const sparkline = (tile.sparkline ?? []).map((p) => mapSeriesPoint(p, sampleSize))
   const thin = sampleSize < MIN_SAMPLE || staleDays > MAX_STALE_DAYS || sparkline.length < MIN_SAMPLE
   const index: Metric<number> = thin ? insufficient(prov) : ok(tile.value, prov)
   const code = tile.game === 'pokemon' ? 'PKM' : tile.game === 'one-piece' ? 'OPC' : tile.game === 'sports' ? 'SPT' : tile.game.slice(0, 3).toUpperCase()

@@ -50,7 +50,7 @@ export class RenaissSource implements DataSource {
       const category = mapIndexTileToCategory(raw, now)
       const prov = mapProvenance(raw.constituentCount ?? 0, raw.updatedAt, now)
       if (!isOk(category.index)) return insufficient(prov)
-      const all = (raw.sparkline ?? []).map(mapSeriesPoint)
+      const all = (raw.sparkline ?? []).map((p) => mapSeriesPoint(p, raw.constituentCount ?? 0))
       const cutoff = now - window * DAY
       const windowed = all.filter((p) => Date.parse(p.t) >= cutoff)
       const use = windowed.length >= MIN_SAMPLE ? windowed : all
