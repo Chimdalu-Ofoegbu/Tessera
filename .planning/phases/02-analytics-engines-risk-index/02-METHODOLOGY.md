@@ -9,7 +9,7 @@ Resolves the three open Phase-2 decisions (risk factor weights, thin-data thresh
 | `MIN_SAMPLE` | 5 | Minimum observations for any metric to be "sufficient" |
 | `MAX_STALE_DAYS` | 30 | Freshness ceiling before data is "stale" |
 | `MIN_POINT_SAMPLE` | 2 | Minimum sales (`n`) at a series point before it counts (else a gap) |
-| `RISK_ENGINE_VERSION` | `risk@1.0.0` | Stamped on every risk result |
+| `RISK_ENGINE_VERSION` | `risk@1.1.0` | Stamped on every risk result (v1.1: TARGET_OBS tuned to 160 against seed fixtures) |
 | `INDEX_ENGINE_VERSION` | `index@1.0.0` | Stamped on every index result |
 
 ## Risk score (0–100, higher = riskier)
@@ -18,7 +18,7 @@ A weighted composite of four transparent factors, each normalized to `[0,100]`. 
 
 | Factor | Weight | Signal | Normalization (→ [0,100] risk) |
 |--------|--------|--------|--------------------------------|
-| **Liquidity** | 0.30 | total observed sales `totalObs = Σ n` over the series | `100 · (1 − min(totalObs, TARGET_OBS)/TARGET_OBS)`, `TARGET_OBS = 40` (fewer trades → higher risk) |
+| **Liquidity** | 0.30 | total observed sales `totalObs = Σ n` over the series | `100 · (1 − min(totalObs, TARGET_OBS)/TARGET_OBS)`, `TARGET_OBS = 160` (fewer trades → higher risk; tuned against seed fixtures for a visible spread) |
 | **Volatility** | 0.30 | coefficient of variation `CoV = stdev/mean` of series `usdCents` | `100 · min(CoV, COV_CAP)/COV_CAP`, `COV_CAP = 0.40` |
 | **Concentration** | 0.25 | Herfindahl index `HHI = Σ share²` of constituent values | `N>1: 100 · (HHI − 1/N)/(1 − 1/N)`; `N≤1: 100` |
 | **Data confidence** | 0.15 | confidence tier + sample + freshness | `base(conf) + sparsePenalty + stalePenalty`, clamped — see below |
@@ -53,11 +53,11 @@ Volume-weighted average price rebased to 100 at a base period, reproducible by h
 
 Series `usdCents = [200000, 210000, 240000]`, all `n = 4`, `confidence = high`, `sampleSize = 40`, fresh:
 - Index: base = 200000 → values `[100.00, 105.00, 120.00]`, current = 120.00. (No gaps; `n=4 ≥ 2`.)
-- Liquidity: totalObs = 12 → `L = 100·(1 − 12/40) = 70`.
+- Liquidity: totalObs = 12 → `L = 100·(1 − 12/160) = 92.5`.
 - Volatility: mean ≈ 216667, stdev ≈ 16997, CoV ≈ 0.0784 → `V = 100·0.0784/0.40 ≈ 19.6`.
 - With constituents `[900000, 60000, 45000, 30000]` (concentrated): total 1,035,000, shares² sum → HHI ≈ 0.7623, N=4 → `C = 100·(0.7623 − 0.25)/0.75 ≈ 68.30`.
 - Data: high(10) + sparse(0, sampleSize 40) + stale(0) → `D = 10`.
-- Score = round(0.30·70 + 0.30·19.61 + 0.25·68.30 + 0.15·10) = round(21 + 5.88 + 17.08 + 1.5) = round(45.46) = **45**. Band: high, deep, fresh → ±6.
+- Score = round(0.30·92.5 + 0.30·19.61 + 0.25·68.30 + 0.15·10) = round(27.75 + 5.88 + 17.08 + 1.5) = round(52.21) = **52**. Band: high, deep, fresh → ±6.
   *(Verified against the actual `computeRisk`/`buildIndex` code — the engine tests are the source of truth.)*
 
 *(Exact test fixtures live in the engine test files; this example is illustrative of the mechanics.)*

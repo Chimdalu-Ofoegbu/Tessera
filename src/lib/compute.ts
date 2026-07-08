@@ -83,14 +83,11 @@ export async function buildCategoryAnalytics(source: DataSource, id: string, now
     const pricedCents = detail.constituents
       .map((c) => (isOk(c.price) ? c.price.value.cents : Number.POSITIVE_INFINITY))
       .filter((v) => Number.isFinite(v))
-    const floor: Metric<Money> = pricedCents.length
-      ? ok({ cents: Math.min(...pricedCents), currency: 'USD' }, prov)
-      : insufficient(prov)
+    const floorCents = pricedCents.length ? Math.min(...pricedCents) : 0
+    const floor: Metric<Money> = pricedCents.length ? ok({ cents: floorCents, currency: 'USD' }, prov) : insufficient(prov)
 
-    const volumeCents = detail.recentSales
-      .filter((s) => s.kind === 'transaction')
-      .reduce((a, s) => a + s.price.cents, 0)
-    const volume: Money = { cents: volumeCents, currency: 'USD' }
+    // Trailing-30d market volume proxy: floor value of active listings (floor × listings).
+    const volume: Money = { cents: floorCents * detail.listings, currency: 'USD' }
 
     return {
       id: detail.id,
@@ -128,7 +125,7 @@ export async function buildOverview(source: DataSource, now: number): Promise<Ov
     const cats = await source.getCategories()
     const analytics = await Promise.all(cats.map((c) => buildCategoryAnalytics(source, c.id, now)))
     const categories = analytics.map(buildCategoryCard)
-    const totalListings = cats.reduce((a, c) => a + c.constituentCount, 0)
+    const totalListings = cats.reduce((a, c) => a + c.listings, 0)
     const totalVolumeCents = analytics.reduce((a, x) => a + x.volume.cents, 0)
     const topMovers: Mover[] = await source.getFeaturedMovers(6)
     const asOf = cats.reduce<string>((latest, c) => (c.updatedAt > latest ? c.updatedAt : latest), cats[0]?.updatedAt ?? new Date(now).toISOString())

@@ -19,7 +19,7 @@ export const MIN_POINT_SAMPLE = 2
 export const THRESHOLDS_VERSION = 'thresholds@0.1.0'
 
 /** Risk engine version — stamped on every risk result (deterministic + versioned). */
-export const RISK_ENGINE_VERSION = 'risk@1.0.0'
+export const RISK_ENGINE_VERSION = 'risk@1.1.0'
 
 /** Index engine version — stamped on every index result. */
 export const INDEX_ENGINE_VERSION = 'index@1.0.0'

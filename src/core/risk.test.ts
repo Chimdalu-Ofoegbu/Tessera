@@ -76,7 +76,7 @@ describe('risk engine', () => {
   it('carries the engine version and finite factors in [0,100]', () => {
     const r = computeRisk(baseInput())
     if (r.ok) {
-      expect(r.value.version).toBe('risk@1.0.0')
+      expect(r.value.version).toBe('risk@1.1.0')
       for (const f of Object.values(r.value.factors)) {
         expect(Number.isFinite(f.raw)).toBe(true)
         expect(f.raw).toBeGreaterThanOrEqual(0)

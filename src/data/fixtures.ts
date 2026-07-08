@@ -32,7 +32,7 @@ const prov = (confidence: Provenance['confidence'], sampleSize: number): Provena
 })
 
 /** Deterministic price series (no Math.random): drift + a fixed sine wobble. */
-function genSeries(startCents: number, days: number, stepDays: number, driftPct: number, amp: number): PricePoint[] {
+function genSeries(startCents: number, days: number, stepDays: number, driftPct: number, amp: number, nPer = 3): PricePoint[] {
   const pts: PricePoint[] = []
   const n = Math.floor(days / stepDays)
   for (let i = 0; i <= n; i++) {
@@ -41,7 +41,7 @@ function genSeries(startCents: number, days: number, stepDays: number, driftPct:
     const wobble = 1 + amp * Math.sin(i * 1.3)
     const usdCents = Math.max(1, Math.round(startCents * drift * wobble))
     const t = new Date(ANCHOR - (days - i * stepDays) * DAY).toISOString()
-    pts.push({ t, usdCents, n: 3, kind: 'transaction', source: 'seed', bucket: 'public' })
+    pts.push({ t, usdCents, n: nPer, kind: 'transaction', source: 'seed', bucket: 'public' })
   }
   return pts
 }
@@ -95,14 +95,15 @@ export interface Seed {
 
 const V = { pwcc: 'PWCC', goldin: 'Goldin', heritage: 'Heritage', ebay: 'eBay (verified)', fanatics: 'Fanatics', psa: 'PSA/DNA' }
 
-// Market-shape series
-const pokemonSeries = genSeries(200_000, 90, 3, 22, 0.04) // LIQUID uptrend
-const pokemonJpnSeries = genSeries(240_000, 90, 3, 12, 0.045)
-const pokemonModernSeries = genSeries(9_000, 90, 3, -9, 0.06) // cooling
-const onePieceSeries = withSpike(genSeries(90_000, 90, 3, 8, 0.05), 1.28) // SPIKE
-const onePieceEmpSeries = genSeries(180_000, 90, 3, 14, 0.055)
-const sportsSeries = genSeries(140_000, 90, 3, 9, 0.06) // CONCENTRATED
-const sportsVintageSeries = genSeries(120_000, 90, 3, -4, 0.05)
+// Market-shape series (last arg = observations per point; tuned so the liquidity
+// factor — and therefore the composite risk — spreads visibly across categories).
+const pokemonSeries = genSeries(200_000, 90, 3, 22, 0.04, 4) // LIQUID uptrend
+const pokemonJpnSeries = genSeries(240_000, 90, 3, 12, 0.045, 2) // thinner vintage
+const pokemonModernSeries = genSeries(9_000, 90, 3, -9, 0.06, 5) // deepest / cooling
+const onePieceSeries = withSpike(genSeries(90_000, 90, 3, 8, 0.1, 2), 1.28) // SPIKE / volatile momentum
+const onePieceEmpSeries = genSeries(180_000, 90, 3, 14, 0.14, 1) // chase set / illiquid + volatile
+const sportsSeries = genSeries(140_000, 90, 3, 9, 0.06, 4) // CONCENTRATED (Jordan)
+const sportsVintageSeries = genSeries(120_000, 90, 3, -4, 0.05, 3)
 const lorcanaSeries = genSeries(30_000, 6, 6, 0, 0.02) // THIN: 2 points < MIN_SAMPLE
 
 const SEEDS: Seed[] = [

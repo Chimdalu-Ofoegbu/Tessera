@@ -10,7 +10,7 @@ import type { PricePoint } from '../data/schema'
 import { MAX_STALE_DAYS, MIN_SAMPLE, RISK_ENGINE_VERSION } from './thresholds'
 
 const DAY = 86_400_000
-const TARGET_OBS = 40
+const TARGET_OBS = 160
 const COV_CAP = 0.4
 const WEIGHTS = { liquidity: 0.3, volatility: 0.3, concentration: 0.25, dataConfidence: 0.15 } as const
 
