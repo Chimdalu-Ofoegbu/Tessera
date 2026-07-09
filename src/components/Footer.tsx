@@ -12,7 +12,7 @@ function Tile({ label, onClick }: { label: string; onClick: () => void }) {
 
 export function Footer({ ui }: { ui: UI }) {
   return (
-    <div style={{ background: '#15120D', marginTop: 56 }}>
+    <div style={{ background: '#15120D' }}>
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '88px 32px 30px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 24 }}>
           <div style={{ font: '800 clamp(28px,3.8vw,54px)/1.08 var(--f-display)', fontStretch: '115%', letterSpacing: '-.02em', color: '#F2EDE3', textTransform: 'uppercase' }}>Made for serious collectors.</div>
