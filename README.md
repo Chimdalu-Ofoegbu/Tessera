@@ -8,7 +8,7 @@ Every number carries its **source + freshness timestamp + confidence**, the risk
 
 ## Public JSON API
 
-**Live:** https://www.tesseraindex.xyz (also `tesseraindex.xyz` and https://tessera-terminal.vercel.app) · API base: `https://www.tesseraindex.xyz/api`. All responses are JSON; **every metric is wrapped in a provenance envelope** and can be `insufficient`:
+**Live:** https://www.tesseraindex.xyz · API base: `https://www.tesseraindex.xyz/api`. All responses are JSON; **every metric is wrapped in a provenance envelope** and can be `insufficient`:
 
 ```jsonc
 // a "metric" is never a bare number:
