@@ -6,6 +6,9 @@ import type { UI } from '@/ui'
 
 const mono = 'var(--f-mono)'
 
+/** $8.3K / $1.2M style — the live floor value is thousands today; a fixed M format would show $0.0M. */
+const fmtUsdShort = (v: number): string => (v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : v >= 1e3 ? `$${(v / 1e3).toFixed(1)}K` : `$${Math.round(v)}`)
+
 function useCountUp(target: number, motion: boolean, dur = 1900): number {
   const [v, setV] = useState(motion ? 0 : target)
   useEffect(() => {
@@ -71,7 +74,7 @@ export function Hero({ ui }: { ui: UI }) {
   }, [data, cats.length, ui.motion, ui.openCat])
 
   const upd = data ? timeUTC(data.asOf) : ''
-  const volM = useCountUp(data ? data.totalVolume.cents / 100 / 1e6 : 0, ui.motion)
+  const volUsd = useCountUp(data ? data.totalVolume.cents / 100 : 0, ui.motion)
   const listings = useCountUp(data ? data.totalListings : 0, ui.motion)
   const count = useCountUp(cats.length, ui.motion)
   const tick = [...cats, ...cats]
@@ -86,7 +89,7 @@ export function Hero({ ui }: { ui: UI }) {
           <span style={{ whiteSpace: 'nowrap' }}>economy, made <em style={{ font: 'italic 300 .95em var(--f-display)', color: '#8A6D1F', letterSpacing: '-.01em', textTransform: 'none' }}>Legible</em>.</span>
         </h1>
         <div style={{ pointerEvents: 'auto', marginTop: 22, maxWidth: 600, font: '400 16.5px/1.6 var(--f-display)', color: '#4C4638' }} className="rise">
-          Verified-sales intelligence for real-world collectibles — powered by the Renaiss Index. Eight category indices, risk scores that show their work, and a source on every number.
+          Verified-sales intelligence for real-world collectibles — powered by the Renaiss Index. Live category indices, risk scores that show their work, and a source on every number.
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 26, width: 230 }} className="rise">
           <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg,rgba(143,111,38,0),rgba(143,111,38,.6))' }} />
@@ -102,7 +105,7 @@ export function Hero({ ui }: { ui: UI }) {
         </div>
         <div style={{ pointerEvents: 'auto', marginTop: 92, display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }} className="rise">
           <div style={{ padding: '0 26px', textAlign: 'left' }}>
-            <div style={{ font: `500 30px ${mono}`, color: '#1B1710' }}>${volM.toFixed(1)}M</div>
+            <div style={{ font: `500 30px ${mono}`, color: '#1B1710' }}>{fmtUsdShort(volUsd)}</div>
             <div style={{ font: `500 9.5px ${mono}`, letterSpacing: '.18em', color: '#6E6759', marginTop: 5 }}>FLOOR VALUE — LISTINGS</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, font: `500 9px ${mono}`, letterSpacing: '.1em', color: '#6E6759', marginTop: 4 }}>
               <span style={{ width: 4, height: 4, background: '#2E8065', borderRadius: '50%' }} />SRC RENAISS INDEX · UPD {upd}
