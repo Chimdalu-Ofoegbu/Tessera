@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
 Status: **DEPLOYED & LIVE ON REAL RENAISS DATA → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot **generated from the live Renaiss Index API** — 2 categories, every metric `source: renaiss`, risk 8/11 scored, index base 100; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
-Last activity: 2026-07-09 — Quick task 260709-4p6: hero copy fixes (stale eight-indices claim removed, adaptive K/M floor-value format), deployed; clean 4K hero screenshot captured via headless-Chrome Playwright (reduced-motion) and filed in Brand Social Assets.
+Last activity: 2026-07-09 — Purged the two private design/brand folders from the public repo (tip + history rewrite + force-push; verified 404 and 0 path-commits on GitHub); local copies intact; .gitignore re-hardened. They must never be pushed.
 
 Progress: [█████████░] ~95% (deployed; demo recording + public-repo push remain)
 
