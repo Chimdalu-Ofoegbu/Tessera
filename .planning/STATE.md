@@ -11,10 +11,10 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
-Status: **DEPLOYED & LIVE ON REAL RENAISS DATA → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot **generated from the live Renaiss Index API** — 2 categories, every metric `source: renaiss`, risk 8/11 scored, index base 100; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
-Last activity: 2026-07-09 — Purged the two private design/brand folders from the public repo (tip + history rewrite + force-push; verified 404 and 0 path-commits on GitHub); local copies intact; .gitignore re-hardened. They must never be pushed.
+Status: **SUBMITTED ✓** — live at https://www.tesseraindex.xyz on real Renaiss Index data; public repo https://github.com/Chimdalu-Ofoegbu/Tessera (clean history, private folders excluded); hackathon submission completed 2026-07-09. All 23 v1 requirements complete.
+Last activity: 2026-07-09 — User submitted to the Renaiss hackathon. Phase 6 complete; SHIP-02 marked Complete. Project done.
 
-Progress: [█████████░] ~95% (deployed; demo recording + public-repo push remain)
+Progress: [██████████] 100% — submitted
 
 ## Performance Metrics
 

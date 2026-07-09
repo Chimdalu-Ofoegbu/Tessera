@@ -108,7 +108,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | RISK-04 | Phase 5 — Trust & Safety UI + Polish | Complete |
 | PROV-01 | Phase 5 — Trust & Safety UI + Polish | Complete |
 | PROV-03 | Phase 5 — Trust & Safety UI + Polish | Complete |
-| SHIP-02 | Phase 6 — Deploy, Demo & Submission | In Progress |
+| SHIP-02 | Phase 6 — Deploy, Demo & Submission | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total (enumerated REQ-IDs across 8 categories; the earlier "21" summary undercounted — DATA×3, API×1, OVW×3, IDX×3, RISK×5, DET×3, PROV×3, SHIP×2 = 23)
