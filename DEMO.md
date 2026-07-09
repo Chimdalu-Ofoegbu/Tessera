@@ -1,6 +1,6 @@
 # Tessera — Demo Script & Submission Checklist
 
-**Live:** https://tessera-terminal.vercel.app — **running on live Renaiss Index data** (every metric `source: "renaiss"`).
+**Live:** https://www.tesseraindex.xyz (custom domain; `tesseraindex.xyz` and https://tessera-terminal.vercel.app also serve) — **running on live Renaiss Index data** (every metric `source: "renaiss"`).
 **One-liner:** *Renaiss gives you the price; Tessera adds the risk lens.* A "Bloomberg-terminal lite" for graded trading cards — real Renaiss indices with a transparent, confidence-banded risk score, a source + timestamp on every number, and honest "insufficient data" states.
 
 ## 60–90s walkthrough (numbers = live snapshot of 2026-07-07; re-check before recording)
