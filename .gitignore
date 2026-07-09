@@ -27,7 +27,3 @@ coverage
 # stray scaffold temp dir (create-vite leftover; safe to delete)
 _scaffold
 _scaffold_*
-
-# Design / brand reference material (not part of the deployable app)
-Tessera - UI Handoff/
-Tessera - Brand Social Assets/
