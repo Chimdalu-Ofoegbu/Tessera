@@ -41,6 +41,21 @@ const POS: [number, number, number?][] = [
   [-2, -3.8, -0.5], [6, -3.7, -0.3], [-6, -3.7, -0.6], [2, -3.7, -0.2],
 ]
 
+/**
+ * Count-aware arrangements. POS is an 8-slot frame (top corners → sides → bottom row);
+ * slicing it for few cards piles them into the top corners. Small counts instead get a
+ * balanced frame around the centered copy — mid-height flanks on wide viewports, a
+ * bottom pair/row on narrow ones (side flanks would sit off-screen there). ≥5 keeps POS.
+ */
+function layoutFor(n: number, aspect: number): [number, number, number?][] {
+  const wide = aspect >= 1.05
+  if (n === 1) return wide ? [[7.2, 0.15, 0.3]] : [[0, -3.9, 0.2]]
+  if (n === 2) return wide ? [[-7.2, 0.25, 0.3], [7.2, 0.05, -0.1]] : [[-2.1, -3.85, -0.2], [2.1, -3.85, 0.1]]
+  if (n === 3) return wide ? [[-7.4, 0.3, 0.2], [7.3, 0.1, -0.1], [0, -3.9, -0.3]] : [[-2.4, -3.8, -0.2], [0, -4.0, 0.1], [2.4, -3.8, -0.4]]
+  if (n === 4) return wide ? [[-7.6, 2.4, 0.1], [7.4, 2.2, -0.2], [-7.4, -2.6, -0.3], [7.2, -2.8, 0.2]] : [[-2.3, -3.8, -0.2], [2.3, -3.8, 0.1], [-3.1, -0.5, -1.2], [3.1, -0.5, -1.4]]
+  return POS
+}
+
 function rng(seed: number): () => number {
   let s = seed % 2147483647
   if (s <= 0) s += 2147483646
@@ -127,12 +142,16 @@ export function createHeroScene(canvas: HTMLCanvasElement, cards: HeroCard[], op
   const r = rng(4242)
   const back = makeCardTexture(null)
   const groups: THREE.Group[] = []
-  const geo = new THREE.PlaneGeometry(2.2, 3.08)
+  const count = Math.min(cards.length, 8)
+  // Fewer cards → larger faces, so a sparse live feed still fills the stage.
+  const gs = count <= 2 ? 1.22 : count <= 4 ? 1.1 : 1
+  const geo = new THREE.PlaneGeometry(2.2 * gs, 3.08 * gs)
+  const layout = layoutFor(count, W / H)
   const sxFor = () => Math.min(1, Math.max(0.82, (Math.tan((camera.fov * Math.PI) / 360) * 15 * (W / H)) / 9.5))
   let sx = sxFor()
 
   cards.slice(0, 8).forEach((card, i) => {
-    const p = POS[i % POS.length]
+    const p = layout[i % layout.length]
     const dx = p[0] + (r() - 0.5) * 0.4
     const by = p[1] + (r() - 0.5) * 0.3
     const bz = p[2] !== undefined ? p[2] : -1.6 + r() * 3.4
