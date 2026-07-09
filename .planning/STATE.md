@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
 Status: **DEPLOYED & LIVE ON REAL RENAISS DATA → https://tessera-terminal.vercel.app** (Vercel prod; static `/api/*.json` snapshot **generated from the live Renaiss Index API** — 2 categories, every metric `source: renaiss`, risk 8/11 scored, index base 100; deep-links + SPA rewrite verified). App complete (Phases 1–5) + shipped (SHIP-01). Remaining SHIP-02 items are the user's: record the 60–90s clip + push to a public GitHub repo.
-Last activity: 2026-07-09 — Completed quick task 260709-3au: count-aware hero card layout (2 live cards repositioned to mid-height flanks, sized up; narrow viewports get a bottom pair; ≥5 cards unchanged). Deployed + live-verified.
+Last activity: 2026-07-09 — Completed quick task 260709-3jy: closed the 56px hero-ticker → footer gap (footer marginTop removed); live-verified 0px on www.tesseraindex.xyz. (Prior: 260709-3au hero card layout.)
 
 Progress: [█████████░] ~95% (deployed; demo recording + public-repo push remain)
 
@@ -63,6 +63,7 @@ None.
 | 260708-kg5 | Strict light mode; remove theme toggle (terminal + drawer light-only) | 2026-07-08 | 5ccddad | [260708-kg5-strict-light-mode-remove-theme-toggle](./quick/260708-kg5-strict-light-mode-remove-theme-toggle/) |
 | 260708-nmm | Fully live on Renaiss (real snapshot, n-fallback mapper fix, 7D/floor-value label honesty; gitignore already covered) | 2026-07-08 | c658fe5+371dbe9+1125728 | [260708-nmm-gitignore-design-assets-go-fully-live-on](./quick/260708-nmm-gitignore-design-assets-go-fully-live-on/) |
 | 260709-3au | Hero: count-aware 3D card layout (2 live cards → mid-height flanks, larger; narrow → bottom pair; ≥5 unchanged) | 2026-07-09 | bd2d101 | [260709-3au-hero-count-aware-card-layout-2-live-card](./quick/260709-3au-hero-count-aware-card-layout-2-live-card/) |
+| 260709-3jy | Close hero ticker → footer gap (footer marginTop 56 → 0) | 2026-07-09 | cc81e3b | [260709-3jy-close-hero-ticker-to-footer-gap](./quick/260709-3jy-close-hero-ticker-to-footer-gap/) |
 
 ## Deferred Items
 
