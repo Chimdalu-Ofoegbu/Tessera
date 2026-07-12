@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
 Status: **SUBMITTED ✓** — live at https://www.tesseraindex.xyz on real Renaiss Index data; public repo https://github.com/Chimdalu-Ofoegbu/Tessera (clean history, private folders excluded); hackathon submission completed 2026-07-09. All 23 v1 requirements complete.
-Last activity: 2026-07-12 — Completed quick task 260712-9da: watchlist now starts empty for every visitor and is session-only (in-memory; dropped the seed + localStorage). tsc/49 tests/build green. Pushing to origin/main + deploying to prod.
+Last activity: 2026-07-12 — Completed quick task 260712-9da: watchlist now starts empty for every visitor and is session-only (in-memory; dropped the seed + localStorage). tsc/49 tests/build green. Pushed to origin/main (649797e) + deployed (vercel --prod, dpl_Bgyi) — live bundle verified: no seed, no storage key.
 
 Progress: [██████████] 100% — submitted
 
