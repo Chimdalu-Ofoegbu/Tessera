@@ -16,7 +16,7 @@ export function WatchlistDrawer({ ui }: { ui: UI }) {
           <div style={{ font: '800 14px var(--f-display)', fontStretch: '115%', letterSpacing: '.22em', color: 'var(--t-ink)' }}>WATCHLIST</div>
           <button className="btn-ghost" onClick={ui.toggleDrawer} style={{ font: `500 10px ${mono}`, padding: '6px 9px' }}>ESC</button>
         </div>
-        <div style={{ font: `500 9.5px ${mono}`, letterSpacing: '.14em', color: 'var(--t-ink3)', marginBottom: 18 }}>{ui.watch.length} PINNED · LOCAL ONLY</div>
+        <div style={{ font: `500 9.5px ${mono}`, letterSpacing: '.14em', color: 'var(--t-ink3)', marginBottom: 18 }}>{ui.watch.length} PINNED · SESSION ONLY</div>
 
         {items.length === 0 ? (
           <div style={{ border: '1px dashed var(--t-goldDash)', borderRadius: 10, padding: '22px 18px', textAlign: 'center' }}>

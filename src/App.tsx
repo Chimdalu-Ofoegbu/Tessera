@@ -8,16 +8,6 @@ import { Detail } from './components/Detail'
 import { WatchlistDrawer } from './components/WatchlistDrawer'
 import { Footer } from './components/Footer'
 
-const readWatch = (): string[] => {
-  try {
-    const raw = localStorage.getItem('tesseraWatch')
-    if (raw) return JSON.parse(raw) as string[]
-  } catch {
-    /* ignore */
-  }
-  return ['one-piece', 'sports']
-}
-
 function usePrefersReducedMotion(): boolean {
   const [rm, setRm] = useState(false)
   useEffect(() => {
@@ -36,16 +26,13 @@ export default function App() {
   const [cat, setCat] = useState<string>('pokemon')
   const [q, setQ] = useState('')
   const [drawer, setDrawer] = useState(false)
-  const [watch, setWatch] = useState<string[]>(() => readWatch())
+  // Watchlist is session-only: empty for every visitor, held in React state (no
+  // localStorage/sessionStorage). It survives in-app navigation (this is a SPA, so
+  // moving between screens never reloads), but any full page reload or a cookie /
+  // site-data clear resets it to empty. Browsers don't expose hard-vs-soft reload to
+  // JS, so "clear on hard refresh" is delivered as "clear on any full reload".
+  const [watch, setWatch] = useState<string[]>([])
   const reduced = usePrefersReducedMotion()
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('tesseraWatch', JSON.stringify(watch))
-    } catch {
-      /* ignore */
-    }
-  }, [watch])
 
   const openCat = useCallback((id: string) => {
     setCat(id)
