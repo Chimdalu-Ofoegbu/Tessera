@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Tessera">
+  <!-- Tessera brand mark: the 2x2 tile diamond from Nav.tsx Logo(), on the site's cream paper.
+       Cream plaque + hairline keep the ink tile legible on both light and dark browser tabs. -->
+  <rect x=".5" y=".5" width="31" height="31" rx="7" fill="#F2EDE3" stroke="#1B1710" stroke-opacity=".1"/>
+  <g transform="rotate(45 16 16)">
+    <rect x="7.5" y="7.5" width="7.5" height="7.5" fill="#C9A961"/>
+    <rect x="17" y="7.5" width="7.5" height="7.5" fill="#2E8065"/>
+    <rect x="7.5" y="17" width="7.5" height="7.5" fill="#8F6F26"/>
+    <rect x="17" y="17" width="7.5" height="7.5" fill="#1B1710"/>
+  </g>
+</svg>
