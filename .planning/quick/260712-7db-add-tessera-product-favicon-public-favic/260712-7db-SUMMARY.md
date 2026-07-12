@@ -33,6 +33,8 @@ browsers noted in the plan).
   inline widget render instead; playwright is no longer installed in scratchpad.
 
 ## Notes
-- Not yet deployed. `vercel --prod` (or a push, if a Git integration is connected) will ship
-  the favicon live; tabs may need a hard-refresh to drop the cached placeholder.
+- Deployed to prod via `vercel --prod` (`dpl_59UMa1f8cvZWmPc54Zz4srNQnUPC`, READY, aliased to
+  tesseraindex.xyz). Verified live: `/favicon.svg` → 200 `image/svg+xml` (710 B, brand colors
+  intact) and the icon link + theme-color present in the served `<head>` on both www and apex.
+  Already-open tabs may need a hard-refresh to drop the cached placeholder.
 - Authorship clean (Bensage only). Private folders untouched and still ignored.
