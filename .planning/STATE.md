@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
 Status: **SUBMITTED ✓** — live at https://www.tesseraindex.xyz on real Renaiss Index data; public repo https://github.com/Chimdalu-Ofoegbu/Tessera (clean history, private folders excluded); hackathon submission completed 2026-07-09. All 23 v1 requirements complete.
-Last activity: 2026-07-12 — Completed quick task 260712-7db: added the Tessera product favicon (brand-diamond SVG + theme-color) to replace the browser-tab placeholder. Deployed to prod (vercel --prod, dpl_59UMa1) — live + verified 200 on www + apex.
+Last activity: 2026-07-12 — Completed quick task 260712-9da: watchlist now starts empty for every visitor and is session-only (in-memory; dropped the seed + localStorage). tsc/49 tests/build green. Pushing to origin/main + deploying to prod.
 
 Progress: [██████████] 100% — submitted
 
@@ -67,6 +67,7 @@ None.
 | 260709-4d6 | Remove vercel.app link from README (custom domain only) | 2026-07-09 | (docs) | quick/260709-4d6 |
 | 260709-4p6 | Hero copy: drop eight-indices claim + adaptive K/M format; 4K hero screenshot captured | 2026-07-09 | dc75dca | quick/260709-4p6 |
 | 260712-7db | Add Tessera product favicon (brand-diamond `public/favicon.svg` on cream plaque) + wire icon + theme-color into index.html | 2026-07-12 | 1846364 | [260712-7db-add-tessera-product-favicon-public-favic](./quick/260712-7db-add-tessera-product-favicon-public-favic/) |
+| 260712-9da | Watchlist: empty by default for every visitor + session-only (in-memory; dropped the `['one-piece','sports']` seed + localStorage persistence) | 2026-07-12 | b1fe8b4 | [260712-9da-watchlist-empty-by-default-for-every-vis](./quick/260712-9da-watchlist-empty-by-default-for-every-vis/) |
 
 ## Deferred Items
 
