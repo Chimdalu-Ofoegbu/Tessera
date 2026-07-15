@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/gen-snapshot.mjs && vite build",
+    "gen:snapshot": "node scripts/gen-snapshot.mjs --live",
     "preview": "vite preview",
     "typecheck": "tsc",
     "test": "vitest run --passWithNoTests",
