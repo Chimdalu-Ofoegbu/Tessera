@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-07-05)
 Phase: 6 of 6 (Deploy, Demo & Submission)
 Plan: —
 Status: **SUBMITTED ✓** — live at https://www.tesseraindex.xyz on real Renaiss Index data; public repo https://github.com/Chimdalu-Ofoegbu/Tessera (clean history, private folders excluded); hackathon submission completed 2026-07-09. All 23 v1 requirements complete.
-Last activity: 2026-07-12 — Completed quick task 260712-9da: watchlist now starts empty for every visitor and is session-only (in-memory; dropped the seed + localStorage). tsc/49 tests/build green. Pushed to origin/main (649797e) + deployed (vercel --prod, dpl_Bgyi) — live bundle verified: no seed, no storage key.
+Last activity: 2026-07-15 — Completed quick task 260715-28f: every production build now regenerates public/api from live Renaiss (scripts/gen-snapshot.mjs, fail-safe fallback, local skip). Verified in the Vercel build log + live site (asOf Jul-14, PKM 13,083 / OPC 24,791). Pushed origin/main (ed7782d) + deployed. Follow-up available: scheduled auto-refresh or partner creds for hands-off freshness between deploys.
 
 Progress: [██████████] 100% — submitted
 
@@ -68,6 +68,7 @@ None.
 | 260709-4p6 | Hero copy: drop eight-indices claim + adaptive K/M format; 4K hero screenshot captured | 2026-07-09 | dc75dca | quick/260709-4p6 |
 | 260712-7db | Add Tessera product favicon (brand-diamond `public/favicon.svg` on cream plaque) + wire icon + theme-color into index.html | 2026-07-12 | 1846364 | [260712-7db-add-tessera-product-favicon-public-favic](./quick/260712-7db-add-tessera-product-favicon-public-favic/) |
 | 260712-9da | Watchlist: empty by default for every visitor + session-only (in-memory; dropped the `['one-piece','sports']` seed + localStorage persistence) | 2026-07-12 | b1fe8b4 | [260712-9da-watchlist-empty-by-default-for-every-vis](./quick/260712-9da-watchlist-empty-by-default-for-every-vis/) |
+| 260715-28f | Build-time live data: `scripts/gen-snapshot.mjs` regenerates `public/api` from live Renaiss on every prod build (fail-safe fallback, local skip); refreshed to Jul-14 | 2026-07-15 | ed7782d | [260715-28f-build-time-live-snapshot-regeneration-ev](./quick/260715-28f-build-time-live-snapshot-regeneration-ev/) |
 
 ## Deferred Items
 
